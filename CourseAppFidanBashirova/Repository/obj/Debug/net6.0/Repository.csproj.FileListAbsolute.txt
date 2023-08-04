@@ -1,0 +1,15 @@
+/Users/thatisphii/Desktop/c#Homeworks/CourseApp/CourseAppFidanBashirova/Repository/bin/Debug/net6.0/Repository.deps.json
+/Users/thatisphii/Desktop/c#Homeworks/CourseApp/CourseAppFidanBashirova/Repository/bin/Debug/net6.0/Repository.dll
+/Users/thatisphii/Desktop/c#Homeworks/CourseApp/CourseAppFidanBashirova/Repository/bin/Debug/net6.0/Repository.pdb
+/Users/thatisphii/Desktop/c#Homeworks/CourseApp/CourseAppFidanBashirova/Repository/bin/Debug/net6.0/Domain.dll
+/Users/thatisphii/Desktop/c#Homeworks/CourseApp/CourseAppFidanBashirova/Repository/bin/Debug/net6.0/Domain.pdb
+/Users/thatisphii/Desktop/c#Homeworks/CourseApp/CourseAppFidanBashirova/Repository/obj/Debug/net6.0/Repository.csproj.AssemblyReference.cache
+/Users/thatisphii/Desktop/c#Homeworks/CourseApp/CourseAppFidanBashirova/Repository/obj/Debug/net6.0/Repository.GeneratedMSBuildEditorConfig.editorconfig
+/Users/thatisphii/Desktop/c#Homeworks/CourseApp/CourseAppFidanBashirova/Repository/obj/Debug/net6.0/Repository.AssemblyInfoInputs.cache
+/Users/thatisphii/Desktop/c#Homeworks/CourseApp/CourseAppFidanBashirova/Repository/obj/Debug/net6.0/Repository.AssemblyInfo.cs
+/Users/thatisphii/Desktop/c#Homeworks/CourseApp/CourseAppFidanBashirova/Repository/obj/Debug/net6.0/Repository.csproj.CoreCompileInputs.cache
+/Users/thatisphii/Desktop/c#Homeworks/CourseApp/CourseAppFidanBashirova/Repository/obj/Debug/net6.0/Repository.csproj.CopyComplete
+/Users/thatisphii/Desktop/c#Homeworks/CourseApp/CourseAppFidanBashirova/Repository/obj/Debug/net6.0/Repository.dll
+/Users/thatisphii/Desktop/c#Homeworks/CourseApp/CourseAppFidanBashirova/Repository/obj/Debug/net6.0/refint/Repository.dll
+/Users/thatisphii/Desktop/c#Homeworks/CourseApp/CourseAppFidanBashirova/Repository/obj/Debug/net6.0/Repository.pdb
+/Users/thatisphii/Desktop/c#Homeworks/CourseApp/CourseAppFidanBashirova/Repository/obj/Debug/net6.0/ref/Repository.dll
