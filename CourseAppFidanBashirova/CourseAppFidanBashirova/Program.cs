@@ -59,6 +59,9 @@ AccountOperation: string accountOperationStr = Console.ReadLine();
                     case (int)Operations.GetGroupById:
                         groupController.GetById();
                         goto Operation;
+                    case (int)Operations.SearchGroupByName:
+                        groupController.SearchByName();
+                        goto Operation;
                     default:
                         ConsoleColor.Red.WriteConsole("Please write correct option");
                         goto Operation;

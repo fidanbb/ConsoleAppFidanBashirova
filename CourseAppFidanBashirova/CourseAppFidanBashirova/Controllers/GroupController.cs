@@ -125,6 +125,40 @@ namespace CourseAppFidanBashirova.Controllers
             }
         }
 
+
+        public void SearchByName()
+        {
+            ConsoleColor.Cyan.WriteConsole("Add SearchText");
+        SearchText: string searchText = Console.ReadLine();
+
+            if (searchText == string.Empty)
+            {
+                ConsoleColor.Red.WriteConsole("You must enter something");
+                goto SearchText;
+            }
+
+
+            List<Group> groups = _groupService.GetAllByExpression(m => m.Name.Trim().ToLower().Contains(searchText.Trim().ToLower()));
+
+
+
+            if (groups is null)
+            {
+                ConsoleColor.Red.WriteConsole("Data not Found,add searchText again");
+                goto SearchText;
+            }
+
+            else
+            {
+                foreach (var group in groups)
+                {
+                    string data = $"{group.Id} - {group.Name} - {group.Capacity}";
+                    ConsoleColor.Green.WriteConsole(data);
+                }
+
+            }
+        }
+
 	}
 }
 

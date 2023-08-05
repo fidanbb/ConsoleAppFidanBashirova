@@ -31,7 +31,15 @@ namespace Repository.Repositories
 
         public List<T> GetAllByExpression(Expression<Func<T, bool>> expression)
         {
-            return AppDbContext<T>.datas.Where(expression.Compile()).ToList();
+            List<T> filteredData = AppDbContext<T>.datas.Where(expression.Compile()).ToList();
+
+
+            if (!filteredData.Any())
+            {
+                return null;
+            }
+
+            return filteredData;
         }
 
         public T GetById(int id)
