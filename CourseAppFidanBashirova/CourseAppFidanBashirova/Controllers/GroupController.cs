@@ -28,12 +28,15 @@ namespace CourseAppFidanBashirova.Controllers
 
             List<Group> groups = _groupService.GetAll();
 
-            foreach (var group in groups)
+            if (groups is not null)
             {
-                if (group.Name == name)
+                foreach (var group in groups)
                 {
-                    ConsoleColor.Red.WriteConsole("This name already exists, add group name again");
-                    goto Name;
+                    if (group.Name == name)
+                    {
+                        ConsoleColor.Red.WriteConsole("This name already exists, add group name again");
+                        goto Name;
+                    }
                 }
             }
 
@@ -66,97 +69,11 @@ namespace CourseAppFidanBashirova.Controllers
 
 		public void GetAll()
 		{
-            var groups = _groupService.GetAll();
-
-            foreach (var group in groups)
-            {
-                string data = $"{group.Id} - {group.Name} - {group.Capacity}";
-                ConsoleColor.Green.WriteConsole(data);
-            }
-        }
-
-
-		public void GetById()
-		{
-            ConsoleColor.Cyan.WriteConsole("Group Id");
-        Id: string idStr = Console.ReadLine();
-
-            int id;
-
-            bool IsCorrectId = int.TryParse(idStr, out id);
-
-            if (IsCorrectId)
-            {
-                var group = _groupService.GetById(id);
-
-                if (group is null)
-                {
-
-                    ConsoleColor.Red.WriteConsole("Data not found,Write id again");
-                    goto Id;
-                }
-
-                string data = $"{group.Id} - {group.Name} - {group.Capacity}";
-                ConsoleColor.Green.WriteConsole(data);
-            }
-            else
-            {
-                ConsoleColor.Red.WriteConsole("Please add id format again");
-                goto Id;
-            }
-        }
-
-        public void Delete()
-        {
-            ConsoleColor.Cyan.WriteConsole("Group Id");
-        Id: string idStr = Console.ReadLine();
-
-            int id;
-
-            bool IsCorrectId = int.TryParse(idStr, out id);
-
-            if (IsCorrectId)
-            {
-                Group group = _groupService.GetById(id);
-
-                if (group is null)
-                {
-
-                    ConsoleColor.Red.WriteConsole("Data not found,Write id again");
-                    goto Id;
-                }
-
-                _groupService.Delete(group);
-                ConsoleColor.Green.WriteConsole("Group Deleted");
-            }
-            else
-            {
-                ConsoleColor.Red.WriteConsole("Please add id format again");
-                goto Id;
-            }
-        }
-
-
-        public void SearchByName()
-        {
-            ConsoleColor.Cyan.WriteConsole("Add SearchText");
-        SearchText: string searchText = Console.ReadLine();
-
-            if (searchText == string.Empty)
-            {
-                ConsoleColor.Red.WriteConsole("You must enter something");
-                goto SearchText;
-            }
-
-
-            List<Group> groups = _groupService.GetAllByExpression(m => m.Name.Trim().ToLower().Contains(searchText.Trim().ToLower()));
-
-
+            List<Group> groups = _groupService.GetAll();
 
             if (groups is null)
             {
-                ConsoleColor.Red.WriteConsole("Data not Found,add searchText again");
-                goto SearchText;
+                ConsoleColor.Red.WriteConsole("There is no group yet, add operation again");
             }
 
             else
@@ -166,8 +83,136 @@ namespace CourseAppFidanBashirova.Controllers
                     string data = $"{group.Id} - {group.Name} - {group.Capacity}";
                     ConsoleColor.Green.WriteConsole(data);
                 }
-
             }
+
+        }
+
+
+		public void GetById()
+		{
+
+            List<Group> groups = _groupService.GetAll();
+
+            if (groups is null)
+            {
+                ConsoleColor.Red.WriteConsole("There is no group yet, add operation again");
+            }
+
+            else
+            {
+                ConsoleColor.Cyan.WriteConsole("Group Id");
+            Id: string idStr = Console.ReadLine();
+
+                int id;
+
+                bool IsCorrectId = int.TryParse(idStr, out id);
+
+                if (IsCorrectId)
+                {
+                    var group = _groupService.GetById(id);
+
+                    if (group is null)
+                    {
+
+                        ConsoleColor.Red.WriteConsole("Data not found,Write id again");
+                        goto Id;
+                    }
+
+                    string data = $"{group.Id} - {group.Name} - {group.Capacity}";
+                    ConsoleColor.Green.WriteConsole(data);
+                }
+                else
+                {
+                    ConsoleColor.Red.WriteConsole("Please add id format again");
+                    goto Id;
+                }
+            }
+
+        }
+
+        public void Delete()
+        {
+
+            List<Group> groups = _groupService.GetAll();
+
+            if (groups is null)
+            {
+                ConsoleColor.Red.WriteConsole("There is no group yet, add operation again");
+            }
+            else
+            {
+                ConsoleColor.Cyan.WriteConsole("Group Id");
+            Id: string idStr = Console.ReadLine();
+
+                int id;
+
+                bool IsCorrectId = int.TryParse(idStr, out id);
+
+                if (IsCorrectId)
+                {
+                    Group group = _groupService.GetById(id);
+
+                    if (group is null)
+                    {
+
+                        ConsoleColor.Red.WriteConsole("Data not found,Write id again");
+                        goto Id;
+                    }
+
+                    _groupService.Delete(group);
+                    ConsoleColor.Green.WriteConsole("Group Deleted");
+                }
+                else
+                {
+                    ConsoleColor.Red.WriteConsole("Please add id format again");
+                    goto Id;
+                }
+            }
+            
+        }
+
+
+        public void SearchByName()
+        {
+            List<Group> groups = _groupService.GetAll();
+
+            if (groups is null)
+            {
+                ConsoleColor.Red.WriteConsole("There is no group yet, add operation again");
+            }
+            else
+            {
+                ConsoleColor.Cyan.WriteConsole("Add SearchText");
+            SearchText: string searchText = Console.ReadLine();
+
+                if (searchText == string.Empty)
+                {
+                    ConsoleColor.Red.WriteConsole("You must enter something");
+                    goto SearchText;
+                }
+
+
+                List<Group> searchedGroups = _groupService.GetAllByExpression(m => m.Name.Trim().ToLower().Contains(searchText.Trim().ToLower()));
+
+
+
+                if (searchedGroups is null)
+                {
+                    ConsoleColor.Red.WriteConsole("Data not Found,add searchText again");
+                    goto SearchText;
+                }
+
+                else
+                {
+                    foreach (var group in searchedGroups)
+                    {
+                        string data = $"{group.Id} - {group.Name} - {group.Capacity}";
+                        ConsoleColor.Green.WriteConsole(data);
+                    }
+
+                }
+            }
+            
         }
 
         public void SortByCapacity()
@@ -177,7 +222,7 @@ namespace CourseAppFidanBashirova.Controllers
 
             if (groups is null)
             {
-                ConsoleColor.Red.WriteConsole("There is no group, Add operation again");
+                ConsoleColor.Red.WriteConsole("There is no group yet, Add operation again");
             }
 
             else
@@ -190,6 +235,75 @@ namespace CourseAppFidanBashirova.Controllers
 
             }
 
+        }
+
+        public void Edit()
+        {
+            List<Group> groups = _groupService.GetAll();
+
+            if (groups is null)
+            {
+                ConsoleColor.Red.WriteConsole("There is no group yet, Add operation again");
+            }
+
+            else
+            {
+                ConsoleColor.Cyan.WriteConsole("Group Id");
+            Id: string idStr = Console.ReadLine();
+
+                int id;
+
+                bool IsCorrectId = int.TryParse(idStr, out id);
+
+                if (IsCorrectId)
+                {
+                    Group group = _groupService.GetById(id);
+
+                    if (group is null)
+                    {
+                        ConsoleColor.Red.WriteConsole("Data not found,Write id again");
+                        goto Id;
+                    }
+
+                    else
+                    {
+                        ConsoleColor.Blue.WriteConsole("Add New Group Name");
+                    Name: string name = Console.ReadLine();
+
+                        if (string.IsNullOrWhiteSpace(name))
+                        {
+                            name = _groupService.GetById(id).Name;
+                        }
+
+                        ConsoleColor.Blue.WriteConsole("Add New Group Capacity");
+                    Capacity: string capacityStr = Console.ReadLine();
+
+                        int capacity;
+
+                        bool isCorrectCapacity = int.TryParse(capacityStr, out capacity);
+
+                        if (isCorrectCapacity)
+                        {
+                            Group newGroup = new()
+                            {
+                                Id = id,
+                                Name = name,
+                                Capacity = capacity
+                            };
+                            _groupService.Edit(newGroup);
+                        }
+
+                        ConsoleColor.Green.WriteConsole("Group Edited");
+                    }
+
+
+                }
+                else
+                {
+                    ConsoleColor.Red.WriteConsole("Please add id format again");
+                    goto Id;
+                }
+            }
         }
 
     }

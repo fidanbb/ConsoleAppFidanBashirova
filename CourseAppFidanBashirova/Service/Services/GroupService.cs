@@ -33,7 +33,7 @@ namespace Service.Services
 
         public void Edit(Group group)
         {
-            throw new NotImplementedException();
+            _groupRepository.Edit(group);
         }
 
         public List<Group> GetAll()

@@ -51,7 +51,7 @@ AccountOperation: string accountOperationStr = Console.ReadLine();
                         groupController.Delete();
                         goto Operation;
                     case (int)Operations.EditGroup:
-                        Console.WriteLine("Edit");
+                        groupController.Edit();
                         goto Operation;
                     case (int)Operations.GetAllGroups:
                         groupController.GetAll();

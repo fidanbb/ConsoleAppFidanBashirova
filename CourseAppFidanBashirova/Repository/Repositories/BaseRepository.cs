@@ -21,28 +21,35 @@ namespace Repository.Repositories
 
         public void Edit(T entity)
         {
-           T updatedData = AppDbContext<T>.datas.FirstOrDefault(m => m.Id == entity.Id);
-            AppDbContext<T>.datas.Remove(updatedData);
+           T data = AppDbContext<T>.datas.FirstOrDefault(m => m.Id == entity.Id);
+            AppDbContext<T>.datas.Remove(data);
             AppDbContext<T>.datas.Add(entity);
           
         }
 
         public List<T> GetAll()
         {
-            return AppDbContext<T>.datas;
-        }
+            List<T> datas = AppDbContext<T>.datas;
 
-        public List<T> GetAllByExpression(Expression<Func<T, bool>> expression)
-        {
-            List<T> filteredData = AppDbContext<T>.datas.Where(expression.Compile()).ToList();
-
-
-            if (!filteredData.Any())
+            if (!datas.Any())
             {
                 return null;
             }
 
-            return filteredData;
+            return datas;
+        }
+
+        public List<T> GetAllByExpression(Expression<Func<T, bool>> expression)
+        {
+            List<T> searchedData = AppDbContext<T>.datas.Where(expression.Compile()).ToList();
+
+
+            if (!searchedData.Any())
+            {
+                return null;
+            }
+
+            return searchedData;
         }
 
         public T GetById(int id)
