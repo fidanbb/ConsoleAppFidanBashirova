@@ -67,7 +67,7 @@ namespace CourseAppFidanBashirova.Controllers
 
 		public void GetById()
 		{
-            ConsoleColor.Cyan.WriteConsole("Add Group Id");
+            ConsoleColor.Cyan.WriteConsole("Group Id");
         Id: string idStr = Console.ReadLine();
 
             int id;
@@ -87,6 +87,36 @@ namespace CourseAppFidanBashirova.Controllers
 
                 string data = $"{group.Id} - {group.Name} - {group.Capacity}";
                 ConsoleColor.Green.WriteConsole(data);
+            }
+            else
+            {
+                ConsoleColor.Red.WriteConsole("Please add id format again");
+                goto Id;
+            }
+        }
+
+        public void Delete()
+        {
+            ConsoleColor.Cyan.WriteConsole("Group Id");
+        Id: string idStr = Console.ReadLine();
+
+            int id;
+
+            bool IsCorrectId = int.TryParse(idStr, out id);
+
+            if (IsCorrectId)
+            {
+                Group group = _groupService.GetById(id);
+
+                if (group is null)
+                {
+
+                    ConsoleColor.Red.WriteConsole("Data not found,Write id again");
+                    goto Id;
+                }
+
+                _groupService.Delete(group);
+                ConsoleColor.Green.WriteConsole("Group Deleted");
             }
             else
             {
