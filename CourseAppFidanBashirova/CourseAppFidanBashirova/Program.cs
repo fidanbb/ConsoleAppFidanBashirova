@@ -49,16 +49,16 @@ AccountOperation: string accountOperationStr = Console.ReadLine();
                         goto Operation;
                     case (int)Operations.DeleteGroup:
                         Console.WriteLine("delete");
-                        break;
+                        goto Operation;
                     case (int)Operations.EditGroup:
                         Console.WriteLine("Edit");
-                        break;
+                        goto Operation;
                     case (int)Operations.GetAllGroups:
                         groupController.GetAll();
-                        break;
+                        goto Operation;
                     case (int)Operations.GetGroupById:
-                        Console.WriteLine("GetById");
-                        break;
+                        groupController.GetById();
+                        goto Operation;
                     default:
                         ConsoleColor.Red.WriteConsole("Please write correct option");
                         goto Operation;

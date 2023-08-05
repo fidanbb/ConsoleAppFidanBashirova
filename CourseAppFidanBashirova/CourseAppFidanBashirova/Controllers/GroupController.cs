@@ -64,6 +64,37 @@ namespace CourseAppFidanBashirova.Controllers
             }
         }
 
+
+		public void GetById()
+		{
+            ConsoleColor.Cyan.WriteConsole("Add Group Id");
+        Id: string idStr = Console.ReadLine();
+
+            int id;
+
+            bool IsCorrectId = int.TryParse(idStr, out id);
+
+            if (IsCorrectId)
+            {
+                var group = _groupService.GetById(id);
+
+                if (group is null)
+                {
+
+                    ConsoleColor.Red.WriteConsole("Data not found,Write id again");
+                    goto Id;
+                }
+
+                string data = $"{group.Id} - {group.Name} - {group.Capacity}";
+                ConsoleColor.Green.WriteConsole(data);
+            }
+            else
+            {
+                ConsoleColor.Red.WriteConsole("Please add id format again");
+                goto Id;
+            }
+        }
+
 	}
 }
 
