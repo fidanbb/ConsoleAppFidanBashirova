@@ -12,6 +12,7 @@ namespace Service.Services.Interfaces
         Group GetById(int id);
         List<Group> GetAll();
         List<Group> GetAllByExpression(Expression<Func<Group, bool>> expression);
+        List<Group> SortByCapacity();
     }
 }
 

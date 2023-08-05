@@ -50,6 +50,11 @@ namespace Service.Services
         {
             return _groupRepository.GetById(id);
         }
+
+        public List<Group> SortByCapacity()
+        {
+            return _groupRepository.SortByCapacity();
+        }
     }
 }
 

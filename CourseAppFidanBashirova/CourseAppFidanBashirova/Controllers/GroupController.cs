@@ -26,6 +26,17 @@ namespace CourseAppFidanBashirova.Controllers
                 goto Name;
             }
 
+            List<Group> groups = _groupService.GetAll();
+
+            foreach (var group in groups)
+            {
+                if (group.Name == name)
+                {
+                    ConsoleColor.Red.WriteConsole("This name already exists, add group name again");
+                    goto Name;
+                }
+            }
+
             ConsoleColor.Blue.WriteConsole("Add Group Capacity");
             Capacity: string capacityStr = Console.ReadLine();
 
@@ -159,6 +170,28 @@ namespace CourseAppFidanBashirova.Controllers
             }
         }
 
-	}
+        public void SortByCapacity()
+        {
+            List<Group> groups = _groupService.SortByCapacity();
+
+
+            if (groups is null)
+            {
+                ConsoleColor.Red.WriteConsole("There is no group, Add operation again");
+            }
+
+            else
+            {
+                foreach (var group in groups)
+                {
+                    string data = $"{group.Id} - {group.Name} - {group.Capacity}";
+                    ConsoleColor.Green.WriteConsole(data);
+                }
+
+            }
+
+        }
+
+    }
 }
 

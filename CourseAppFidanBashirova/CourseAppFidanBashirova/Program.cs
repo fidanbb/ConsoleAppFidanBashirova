@@ -62,6 +62,9 @@ AccountOperation: string accountOperationStr = Console.ReadLine();
                     case (int)Operations.SearchGroupByName:
                         groupController.SearchByName();
                         goto Operation;
+                    case (int)Operations.SortGroupByCapacity:
+                        groupController.SortByCapacity();
+                        goto Operation;
                     default:
                         ConsoleColor.Red.WriteConsole("Please write correct option");
                         goto Operation;
