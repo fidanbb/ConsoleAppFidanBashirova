@@ -116,20 +116,32 @@ namespace CourseAppFidanBashirova.Controllers
         }
 
 
-        public void Login()
+        public bool CheckAnyUsersExit()
         {
             var users = _accountService.GetAll();
 
-            if (!users.Any())
-            {
-                ConsoleColor.Red.WriteConsole("You must register first");
-                Register();
+            //if (!users.Any())
+            //{
+            //    //ConsoleColor.Red.WriteConsole("You must register first");
+            //    //Register();
 
-            }
-            else
-            {
+            //}
+            return !users.Any();
+        }
+
+
+        public void Login()
+        {
+            //var users = _accountService.GetAll();
+
+            //if (!users.Any())
+            //{
+            //    ConsoleColor.Red.WriteConsole("You must register first");
+            //    Register();
+
+            //}
+            
                 ConsoleColor.Blue.WriteConsole("Add Email");
-
             Email: string email = Console.ReadLine();
 
                 if (!email.StringRegEx(@"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
@@ -159,7 +171,7 @@ namespace CourseAppFidanBashirova.Controllers
 
                 }
 
-            }
+            
 
         }
 
