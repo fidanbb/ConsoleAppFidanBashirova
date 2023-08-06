@@ -83,7 +83,7 @@ AccountOperation: string accountOperationStr = Console.ReadLine();
                         studentController.GetById();
                         goto Operation;
                     case (int)Operations.SearchStudentByFullName:
-                        Console.WriteLine("search");
+                        studentController.SearchByFullName();
                         goto Operation;
                     case (int)Operations.SortStudentByAge:
                         Console.WriteLine("sort");

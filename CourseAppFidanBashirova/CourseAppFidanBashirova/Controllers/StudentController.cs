@@ -28,22 +28,28 @@ namespace CourseAppFidanBashirova.Controllers
             }
             else
             {
-                ConsoleColor.Blue.WriteConsole("Add FullName");
+                ConsoleColor.Blue.WriteConsole("Add Student's FullName");
             FullName: string fullName = Console.ReadLine();
 
                 if (string.IsNullOrWhiteSpace(fullName))
                 {
-                    ConsoleColor.Red.WriteConsole("Name can not be null, please add name again");
+                    ConsoleColor.Red.WriteConsole("FullName can not be null, please add name again");
                     goto FullName;
                 }
 
-                if (!fullName.StringRegEx(@"^[A-Za-z.'\- ]+$"))
+                if (fullName.StringRegEx(@"\d"))
                 {
-                    ConsoleColor.Red.WriteConsole("FullName cannot have digits and special chars, please add name again");
+                    ConsoleColor.Red.WriteConsole("FullName cannot have digits, please add FullName again");
                     goto FullName;
                 }
 
-                ConsoleColor.Blue.WriteConsole("Add Age");
+                if (fullName.StringRegEx(@"^(?![A-Z])[^\w\s]+$"))
+                {
+                    ConsoleColor.Red.WriteConsole("FullName cannot have special characters, please add FullName again");
+                    goto FullName;
+                }
+
+                ConsoleColor.Blue.WriteConsole("Add Student's Age");
             Age: string ageStr = Console.ReadLine();
                 int age;
 
@@ -52,21 +58,21 @@ namespace CourseAppFidanBashirova.Controllers
                 if (isCorrectAge)
                 {
 
-                    ConsoleColor.Blue.WriteConsole("Add Address");
+                    ConsoleColor.Blue.WriteConsole("Add Student's Address");
                 Address: string address = Console.ReadLine();
 
                     if (string.IsNullOrWhiteSpace(address))
                     {
-                        ConsoleColor.Red.WriteConsole("Address can not be null, please add name again");
+                        ConsoleColor.Red.WriteConsole("Address can not be null, please add address again");
                         goto Address;
                     }
 
-                    ConsoleColor.Blue.WriteConsole("Add Tel number");
+                    ConsoleColor.Blue.WriteConsole("Add Student's Phone number");
                 PhoneNumber: string phoneNumber = Console.ReadLine();
 
                     if (string.IsNullOrWhiteSpace(phoneNumber))
                     {
-                        ConsoleColor.Red.WriteConsole("PhoneNumber can not be null, please add name again");
+                        ConsoleColor.Red.WriteConsole("PhoneNumber can not be null, please add phoneNumber again");
                         goto PhoneNumber;
                     }
 
@@ -221,6 +227,52 @@ namespace CourseAppFidanBashirova.Controllers
                 {
                     ConsoleColor.Red.WriteConsole("Please add correct id format");
                     goto Id;
+                }
+            }
+        }
+
+
+        public void SearchByFullName()
+        {
+            List<Student> students = _studentService.GetAll();
+
+            if (students is null)
+            {
+                ConsoleColor.Red.WriteConsole("There is no student yet, add operation again");
+            }
+            else
+            {
+                ConsoleColor.Blue.WriteConsole("Add SearchText");
+            SearchText: string searchText = Console.ReadLine();
+
+                if (searchText == string.Empty)
+                {
+                    ConsoleColor.Red.WriteConsole("You must enter something");
+                    goto SearchText;
+                }
+
+
+                List<Student> searchedStudents = _studentService.GetAllByExpression(m => m.FullName.Trim().ToLower().Contains(searchText.Trim().ToLower()));
+
+
+
+                if (searchedStudents is null)
+                {
+                    ConsoleColor.Red.WriteConsole("Data not Found,add searchText again");
+                    goto SearchText;
+                }
+
+                else
+                {
+                    foreach (var student in searchedStudents)
+                    {
+                        string data = $"{student.Id} - {student.FullName} - {student.Age}" +
+                            $" - {student.Address} - {student.PhoneNumber} - {student.StudentGroup.Name}";
+                        ConsoleColor.Green.WriteConsole(data);
+                    }
+
+                    ConsoleColor.Cyan.WriteConsole("Please add operation again");
+
                 }
             }
         }

@@ -35,7 +35,7 @@ namespace CourseAppFidanBashirova.Controllers
                 goto Name;
             }
 
-            if (name.StringRegEx(@"[$&+,:;=?@#|'<>.-^*()%!]"))
+            if (name.StringRegEx(@"^(?![A-Z])[^\w\s]+$"))
             {
                 ConsoleColor.Red.WriteConsole("Name cannot have special characters, please add name again");
                 goto Name;
@@ -58,7 +58,7 @@ namespace CourseAppFidanBashirova.Controllers
                 goto Surname;
             }
 
-            if (surname.StringRegEx(@"[$&+,:;=?@#|'<>.-^*()%!]"))
+            if (surname.StringRegEx(@"^(?![A-Z])[^\w\s]+$"))
             {
                 ConsoleColor.Red.WriteConsole("Surname cannot have special characters, please add surname again");
                 goto Surname;
