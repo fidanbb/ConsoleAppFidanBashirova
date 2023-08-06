@@ -71,7 +71,7 @@ AccountOperation: string accountOperationStr = Console.ReadLine();
                         studentController.Create();
                         goto Operation;
                     case (int)Operations.DeleteStudent:
-                        Console.WriteLine("delete");
+                        studentController.Delete();
                         goto Operation;
                     case (int)Operations.EditStudent:
                         Console.WriteLine("edit");

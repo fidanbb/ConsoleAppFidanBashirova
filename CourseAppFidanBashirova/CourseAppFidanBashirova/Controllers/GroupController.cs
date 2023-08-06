@@ -162,7 +162,7 @@ namespace CourseAppFidanBashirova.Controllers
                     if (group is null)
                     {
 
-                        ConsoleColor.Red.WriteConsole("Data not found,Write id again");
+                        ConsoleColor.Red.WriteConsole("Group not found,Write id again");
                         goto Id;
                     }
 
