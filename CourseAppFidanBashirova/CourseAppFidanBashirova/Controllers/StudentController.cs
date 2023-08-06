@@ -98,7 +98,6 @@ namespace CourseAppFidanBashirova.Controllers
 
                             _studentService.Create(student);
                             ConsoleColor.Green.WriteConsole("Student Created");
-                            Console.WriteLine();
                             ConsoleColor.Cyan.WriteConsole("Please add operation again");
 
                         }
@@ -145,6 +144,46 @@ namespace CourseAppFidanBashirova.Controllers
                 }
 
                 ConsoleColor.Cyan.WriteConsole("Please add operation again");
+            }
+        }
+
+
+        public void GetById()
+        {
+            List<Student> students = _studentService.GetAll();
+
+            if (students is null)
+            {
+                ConsoleColor.Red.WriteConsole("There is no student yet, add operation again");
+            }
+            else
+            {
+                ConsoleColor.Blue.WriteConsole("Add Stuedent Id");
+            Id: string idStr = Console.ReadLine();
+                int id;
+                bool isCorrecId = int.TryParse(idStr, out id);
+
+                if (isCorrecId)
+                {
+                    Student student = _studentService.GetById(id);
+                    if (student is null)
+                    {
+                        ConsoleColor.Red.WriteConsole("Student not found, add id again");
+                        goto Id;
+
+                    }
+
+                    string data = $"{student.Id} - {student.FullName} - {student.Age} - {student.Address}" +
+                        $" - {student.PhoneNumber} - {student.StudentGroup.Name}";
+                    ConsoleColor.Green.WriteConsole(data);
+
+                    ConsoleColor.Cyan.WriteConsole("Please add operation again");
+                }
+                else
+                {
+                    ConsoleColor.Red.WriteConsole("Please add correct id format");
+                    goto Id;
+                }
             }
         }
 

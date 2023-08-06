@@ -80,7 +80,7 @@ AccountOperation: string accountOperationStr = Console.ReadLine();
                         studentController.GetAll();
                         goto Operation;
                     case (int)Operations.GetStudentById:
-                        Console.WriteLine("getbyid");
+                        studentController.GetById();
                         goto Operation;
                     case (int)Operations.SearchStudentByFullName:
                         Console.WriteLine("search");

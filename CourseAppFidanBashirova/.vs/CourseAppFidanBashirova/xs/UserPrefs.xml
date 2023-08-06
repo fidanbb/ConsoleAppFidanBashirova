@@ -1,71 +1,58 @@
 ﻿<Properties StartupConfiguration="{807420AE-CD9C-4B66-A47D-17759CD74759}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="CourseAppFidanBashirova/Controllers/AccountController.cs">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.CourseAppFidanBashirova PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CourseAppFidanBashirova/Controllers/StudentController.cs">
     <Files>
-      <File FileName="CourseAppFidanBashirova/Program.cs" Line="8" Column="34" />
+      <File FileName="CourseAppFidanBashirova/Program.cs" Line="89" Column="51" />
+      <File FileName="CourseAppFidanBashirova/Controllers/AccountController.cs" Line="36" Column="14" />
+      <File FileName="Service/Services/AccountService.cs" Line="29" Column="1" />
+      <File FileName="Service/Helpers/Enums/AccountOperations.cs" Line="7" Column="17" />
+      <File FileName="../../ConsoleProjectExample/LibraryConsoleProject/LibraryConsoleProject/Program.cs" Line="63" Column="85" />
+      <File FileName="../../ConsoleProjectExample/LibraryConsoleProject/Service/Helpers/Enums/Operations.cs" Line="1" Column="1" />
+      <File FileName="Service/Services/Interfaces/IAccountService.cs" Line="10" Column="23" />
+      <File FileName="Service/Helpers/Extensions/ConsoleExtensions.cs" Line="11" Column="1" />
+      <File FileName="Service/Helpers/Extensions/StringExtensions.cs" Line="14" Column="1" />
       <File FileName="../../ConsoleProjectExample/LibraryConsoleProject/Repository/Data/AppDbContext.cs" Line="1" Column="1" />
-      <File FileName="Repository/Repositories/Interfaces/IBaseRepository.cs" Line="14" Column="74" />
-      <File FileName="../../ConsoleProjectExample/LibraryConsoleProject/Repository/Repositories/Interfaces/IBaseRepository.cs" Line="14" Column="67" />
-      <File FileName="../../ConsoleProjectExample/LibraryConsoleProject/Repository/Repositories/BaseRepository.cs" Line="33" Column="79" />
-      <File FileName="Repository/Repositories/BaseRepository.cs" Line="26" Column="1" />
-      <File FileName="../../ConsoleProjectExample/LibraryConsoleProject/Repository/Repositories/LibraryRepository.cs" Line="1" Column="1" />
-      <File FileName="Service/Services/Interfaces/IAccountService.cs" Line="9" Column="42" />
+      <File FileName="../../ConsoleProjectExample/LibraryConsoleProject/Repository/Repositories/BaseRepository.cs" Line="34" Column="1" />
+      <File FileName="Domain/Models/Group.cs" Line="2" Column="21" />
+      <File FileName="../../ConsoleProjectExample/LibraryConsoleProject/Repository/Repositories/LibraryRepository.cs" Line="9" Column="3" />
+      <File FileName="../../ConsoleProjectExample/LibraryConsoleProject/Repository/Repositories/Interfaces/ILibraryRepository.cs" Line="9" Column="3" />
+      <File FileName="../../ConsoleProjectExample/LibraryConsoleProject/Domain/Models/Library.cs" Line="1" Column="1" />
+      <File FileName="Repository/Repositories/Interfaces/IBaseRepository.cs" Line="16" Column="2" />
+      <File FileName="Repository/Repositories/BaseRepository.cs" Line="26" Column="47" />
+      <File FileName="Domain/Models/User.cs" Line="1" Column="1" />
+      <File FileName="Domain/Common/BaseEntity.cs" Line="1" Column="1" />
+      <File FileName="Repository/Repositories/Interfaces/IGroupRepository.cs" Line="8" Column="30" />
+      <File FileName="Repository/Repositories/GroupRepository.cs" Line="11" Column="43" />
+      <File FileName="Service/Services/Interfaces/IGroupService.cs" Line="19" Column="1" />
       <File FileName="../../ConsoleProjectExample/LibraryConsoleProject/Service/Services/Interfaces/ILibraryService.cs" Line="1" Column="1" />
-      <File FileName="../../ConsoleProjectExample/LibraryConsoleProject/Service/Services/LibraryService.cs" Line="31" Column="64" />
-      <File FileName="Service/Services/AccountService.cs" Line="16" Column="22" />
-      <File FileName="Domain/Models/User.cs" Line="15" Column="1" />
-      <File FileName="Service/Helpers/Extensions/ConsoleExtensions.cs" Line="12" Column="6" />
-      <File FileName="../../ConsoleProjectExample/LibraryConsoleProject/Service/Helpers/Extensions/ConsoleExtensions.cs" Line="13" Column="2" />
-      <File FileName="CourseAppFidanBashirova/Controllers/AccountController.cs" Line="17" Column="1" />
-      <File FileName="../../ConsoleProjectExample/LibraryConsoleProject/LibraryConsoleProject/Controllers/LibraryController.cs" Line="144" Column="35" />
-      <File FileName="../../ConsoleProjectExample/LibraryConsoleProject/LibraryConsoleProject/Program.cs" Line="30" Column="51" />
-      <File FileName="Service/Helpers/Extensions/StringExtensions.cs" Line="16" Column="1" />
-      <File FileName="../../ConsoleProjectExample/LibraryConsoleProject/Repository/Repositories/Interfaces/ILibraryRepository.cs" Line="1" Column="1" />
-      <File FileName="../../ConsoleProjectExample/LibraryConsoleProject/Service/Helpers/Enums/Operations.cs" Line="11" Column="5" />
+      <File FileName="../../ConsoleProjectExample/LibraryConsoleProject/Service/Services/LibraryService.cs" Line="24" Column="22" />
+      <File FileName="Service/Services/GroupService.cs" Line="47" Column="10" />
+      <File FileName="Service/Helpers/Enums/Operations.cs" Line="19" Column="25" />
+      <File FileName="CourseAppFidanBashirova/Controllers/GroupController.cs" Line="137" Column="18" />
+      <File FileName="../../ConsoleProjectExample/LibraryConsoleProject/LibraryConsoleProject/Controllers/LibraryController.cs" Line="31" Column="1" />
+      <File FileName="Domain/Models/Student.cs" Line="12" Column="23" />
+      <File FileName="Repository/Repositories/Interfaces/IStudentRepository.cs" Line="8" Column="3" />
+      <File FileName="Repository/Repositories/StudentRepository.cs" Line="9" Column="3" />
+      <File FileName="Service/Services/Interfaces/IStudentService.cs" Line="14" Column="65" />
+      <File FileName="Service/Services/StudentService.cs" Line="48" Column="10" />
+      <File FileName="CourseAppFidanBashirova/Controllers/StudentController.cs" Line="143" Column="80" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="CourseAppFidanBashirova" expanded="True">
             <Node name="CourseAppFidanBashirova" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="AccountController.cs" selected="True" />
-              </Node>
-            </Node>
-            <Node name="Domain" expanded="True" />
-            <Node name="Repository" expanded="True" />
-            <Node name="Service" expanded="True">
-              <Node name="Helpers" expanded="True">
-                <Node name="Extensions" expanded="True" />
-              </Node>
-              <Node name="Services" expanded="True" />
-            </Node>
-          </Node>
-          <Node name="LibraryConsoleProject">
-            <Node name="LibraryConsoleProject">
               <Node name="Controllers" expanded="True" />
-            </Node>
-            <Node name="Repository" expanded="True">
-              <Node name="Data" expanded="True" />
-              <Node name="Repositories" expanded="True" />
-            </Node>
-            <Node name="Service" expanded="True">
-              <Node name="Dependencies" expanded="True" />
-              <Node name="Helpers" expanded="True">
-                <Node name="Enums" expanded="True" />
-                <Node name="Extensions" expanded="True" />
-              </Node>
-              <Node name="Services" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.CourseAppFidanBashirova PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>

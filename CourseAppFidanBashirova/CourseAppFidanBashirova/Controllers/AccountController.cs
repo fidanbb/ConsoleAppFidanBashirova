@@ -29,12 +29,17 @@ namespace CourseAppFidanBashirova.Controllers
 			}
 
 
-            if (!name.StringRegEx(@"^[A-Za-z.'\- ]+$"))
+            if (name.StringRegEx(@"\d"))
             {
-                ConsoleColor.Red.WriteConsole("Name cannot have digits and special chars, please add name again");
+                ConsoleColor.Red.WriteConsole("Name cannot have digits, please add name again");
                 goto Name;
             }
 
+            if (name.StringRegEx(@"[$&+,:;=?@#|'<>.-^*()%!]"))
+            {
+                ConsoleColor.Red.WriteConsole("Name cannot have special characters, please add name again");
+                goto Name;
+            }
 
             ConsoleColor.Blue.WriteConsole("Add Surname");
         Surname: string surname = Console.ReadLine();
@@ -46,9 +51,16 @@ namespace CourseAppFidanBashirova.Controllers
             }
 
 
-            if (!surname.StringRegEx(@"^[A-Za-z.'\- ]+$"))
+
+            if (surname.StringRegEx(@"\d"))
             {
-                ConsoleColor.Red.WriteConsole("Name cannot have digits and special chars, please add surname again");
+                ConsoleColor.Red.WriteConsole("Surname cannot have digits, please add surname again");
+                goto Surname;
+            }
+
+            if (surname.StringRegEx(@"[$&+,:;=?@#|'<>.-^*()%!]"))
+            {
+                ConsoleColor.Red.WriteConsole("Surname cannot have special characters, please add surname again");
                 goto Surname;
             }
 

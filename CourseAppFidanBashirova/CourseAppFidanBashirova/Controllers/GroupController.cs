@@ -32,7 +32,7 @@ namespace CourseAppFidanBashirova.Controllers
             {
                 foreach (var group in groups)
                 {
-                    if (group.Name == name)
+                    if (group.Name.Trim().ToLower() == name.Trim().ToLower())
                     {
                         ConsoleColor.Red.WriteConsole("This name already exists, add group name again");
                         goto Name;
@@ -56,8 +56,7 @@ namespace CourseAppFidanBashirova.Controllers
 				};
 				_groupService.Create(group);
                 ConsoleColor.Green.WriteConsole("Group Created");
-                Console.WriteLine();
-                ConsoleColor.Cyan.WriteConsole("Please add new operation");
+                ConsoleColor.Cyan.WriteConsole("Please add operation again");
             }
 
 			else
@@ -87,8 +86,7 @@ namespace CourseAppFidanBashirova.Controllers
                     ConsoleColor.Green.WriteConsole(data);
                    
                 }
-                Console.WriteLine();
-                ConsoleColor.Cyan.WriteConsole("Please add new operation");
+                ConsoleColor.Cyan.WriteConsole("Please add operation again");
             }
 
         }
@@ -126,8 +124,8 @@ namespace CourseAppFidanBashirova.Controllers
 
                     string data = $"{group.Id} - {group.Name} - {group.Capacity}";
                     ConsoleColor.Green.WriteConsole(data);
-                    Console.WriteLine();
-                    ConsoleColor.Cyan.WriteConsole("Please add new operation");
+
+                    ConsoleColor.Cyan.WriteConsole("Please add operation again");
 
                 }
                 else
@@ -170,7 +168,7 @@ namespace CourseAppFidanBashirova.Controllers
 
                     _groupService.Delete(group);
                     ConsoleColor.Green.WriteConsole("Group Deleted");
-                    ConsoleColor.Cyan.WriteConsole("Please add new operation");
+                    ConsoleColor.Cyan.WriteConsole("Please add operation again");
 
                 }
                 else
@@ -220,8 +218,8 @@ namespace CourseAppFidanBashirova.Controllers
                         string data = $"{group.Id} - {group.Name} - {group.Capacity}";
                         ConsoleColor.Green.WriteConsole(data);
                     }
-                    Console.WriteLine();
-                    ConsoleColor.Cyan.WriteConsole("Please add new operation");
+
+                    ConsoleColor.Cyan.WriteConsole("Please add operation again");
 
                 }
             }
@@ -245,9 +243,8 @@ namespace CourseAppFidanBashirova.Controllers
                     string data = $"{group.Id} - {group.Name} - {group.Capacity}";
                     ConsoleColor.Green.WriteConsole(data);
                 }
-                Console.WriteLine();
-                ConsoleColor.Cyan.WriteConsole("Please add new operation");
 
+                ConsoleColor.Cyan.WriteConsole("Please add operation again");
             }
 
         }
@@ -323,7 +320,7 @@ namespace CourseAppFidanBashirova.Controllers
                             }
 
                             ConsoleColor.Green.WriteConsole("Group Edited");
-                            ConsoleColor.Cyan.WriteConsole("Please add new operation");
+                            ConsoleColor.Cyan.WriteConsole("Please add operation again");
 
                         }
                     }
