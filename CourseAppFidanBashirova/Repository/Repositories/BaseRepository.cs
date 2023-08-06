@@ -24,7 +24,6 @@ namespace Repository.Repositories
            T data = AppDbContext<T>.datas.FirstOrDefault(m => m.Id == entity.Id);
             AppDbContext<T>.datas.Remove(data);
             AppDbContext<T>.datas.Add(entity);
-          
         }
 
         public List<T> GetAll()

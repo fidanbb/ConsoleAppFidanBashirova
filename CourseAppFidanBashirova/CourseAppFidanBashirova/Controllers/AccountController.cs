@@ -120,26 +120,12 @@ namespace CourseAppFidanBashirova.Controllers
         {
             var users = _accountService.GetAll();
 
-            //if (!users.Any())
-            //{
-            //    //ConsoleColor.Red.WriteConsole("You must register first");
-            //    //Register();
-
-            //}
             return !users.Any();
         }
 
 
         public void Login()
         {
-            //var users = _accountService.GetAll();
-
-            //if (!users.Any())
-            //{
-            //    ConsoleColor.Red.WriteConsole("You must register first");
-            //    Register();
-
-            //}
             
                 ConsoleColor.Blue.WriteConsole("Add Email");
             Email: string email = Console.ReadLine();

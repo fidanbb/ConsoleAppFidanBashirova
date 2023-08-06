@@ -55,6 +55,9 @@ namespace CourseAppFidanBashirova.Controllers
 					Capacity = capacity
 				};
 				_groupService.Create(group);
+                ConsoleColor.Green.WriteConsole("Group Created");
+                Console.WriteLine();
+                ConsoleColor.Cyan.WriteConsole("Please add new operation");
             }
 
 			else
@@ -82,7 +85,10 @@ namespace CourseAppFidanBashirova.Controllers
                 {
                     string data = $"{group.Id} - {group.Name} - {group.Capacity}";
                     ConsoleColor.Green.WriteConsole(data);
+                   
                 }
+                Console.WriteLine();
+                ConsoleColor.Cyan.WriteConsole("Please add new operation");
             }
 
         }
@@ -100,7 +106,7 @@ namespace CourseAppFidanBashirova.Controllers
 
             else
             {
-                ConsoleColor.Cyan.WriteConsole("Group Id");
+                ConsoleColor.Blue.WriteConsole("Add Group Id");
             Id: string idStr = Console.ReadLine();
 
                 int id;
@@ -120,6 +126,9 @@ namespace CourseAppFidanBashirova.Controllers
 
                     string data = $"{group.Id} - {group.Name} - {group.Capacity}";
                     ConsoleColor.Green.WriteConsole(data);
+                    Console.WriteLine();
+                    ConsoleColor.Cyan.WriteConsole("Please add new operation");
+
                 }
                 else
                 {
@@ -141,7 +150,7 @@ namespace CourseAppFidanBashirova.Controllers
             }
             else
             {
-                ConsoleColor.Cyan.WriteConsole("Group Id");
+                ConsoleColor.Blue.WriteConsole("Add Group Id");
             Id: string idStr = Console.ReadLine();
 
                 int id;
@@ -161,6 +170,8 @@ namespace CourseAppFidanBashirova.Controllers
 
                     _groupService.Delete(group);
                     ConsoleColor.Green.WriteConsole("Group Deleted");
+                    ConsoleColor.Cyan.WriteConsole("Please add new operation");
+
                 }
                 else
                 {
@@ -209,6 +220,8 @@ namespace CourseAppFidanBashirova.Controllers
                         string data = $"{group.Id} - {group.Name} - {group.Capacity}";
                         ConsoleColor.Green.WriteConsole(data);
                     }
+                    Console.WriteLine();
+                    ConsoleColor.Cyan.WriteConsole("Please add new operation");
 
                 }
             }
@@ -232,6 +245,8 @@ namespace CourseAppFidanBashirova.Controllers
                     string data = $"{group.Id} - {group.Name} - {group.Capacity}";
                     ConsoleColor.Green.WriteConsole(data);
                 }
+                Console.WriteLine();
+                ConsoleColor.Cyan.WriteConsole("Please add new operation");
 
             }
 
@@ -248,7 +263,7 @@ namespace CourseAppFidanBashirova.Controllers
 
             else
             {
-                ConsoleColor.Cyan.WriteConsole("Group Id");
+                ConsoleColor.Blue.WriteConsole("Add Group Id");
             Id: string idStr = Console.ReadLine();
 
                 int id;
@@ -282,8 +297,9 @@ namespace CourseAppFidanBashirova.Controllers
 
                         bool isCorrectCapacity = int.TryParse(capacityStr, out capacity);
 
-                        if (isCorrectCapacity)
+                        if (string.IsNullOrWhiteSpace(capacityStr))
                         {
+                            capacity = _groupService.GetById(id).Capacity;
                             Group newGroup = new()
                             {
                                 Id = id,
@@ -291,11 +307,26 @@ namespace CourseAppFidanBashirova.Controllers
                                 Capacity = capacity
                             };
                             _groupService.Edit(newGroup);
+                            ConsoleColor.Green.WriteConsole("Group Edited");
                         }
+                        else
+                        {
+                            if (isCorrectCapacity)
+                            {
+                                Group newGroup = new()
+                                {
+                                    Id = id,
+                                    Name = name,
+                                    Capacity = capacity
+                                };
+                                _groupService.Edit(newGroup);
+                            }
 
-                        ConsoleColor.Green.WriteConsole("Group Edited");
+                            ConsoleColor.Green.WriteConsole("Group Edited");
+                            ConsoleColor.Cyan.WriteConsole("Please add new operation");
+
+                        }
                     }
-
 
                 }
                 else

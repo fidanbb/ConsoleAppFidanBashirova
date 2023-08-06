@@ -9,7 +9,14 @@ namespace Service.Helpers.Enums
 		GetAllGroups,
 		GetGroupById,
 		SearchGroupByName,
-		SortGroupByCapacity
-	}
+		SortGroupByCapacity,
+		CreateStudent,
+        DeleteStudent,
+        EditStudent,
+        GetAllStudents,
+        GetStudentById,
+        SearchStudentByFullName,
+        SortStudentByAge
+    }
 }
 

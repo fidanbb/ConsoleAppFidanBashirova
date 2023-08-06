@@ -11,7 +11,7 @@ namespace Service.Services.Interfaces
         void Edit(Student student);
         Student GetById(int id);
         List<Student> GetAll();
-        List<Student> GetAllByExpression(Expression<Func<Group, bool>> expression);
+        List<Student> GetAllByExpression(Expression<Func<Student, bool>> expression);
     }
 }
 
