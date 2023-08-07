@@ -284,7 +284,7 @@ namespace CourseAppFidanBashirova.Controllers
 
                         if (string.IsNullOrWhiteSpace(name))
                         {
-                            name = _groupService.GetById(id).Name;
+                            name = group.Name;
                         }
 
                         ConsoleColor.Blue.WriteConsole("Add New Group Capacity");
@@ -296,7 +296,7 @@ namespace CourseAppFidanBashirova.Controllers
 
                         if (string.IsNullOrWhiteSpace(capacityStr))
                         {
-                            capacity = _groupService.GetById(id).Capacity;
+                            capacity = group.Capacity;
                             Group newGroup = new()
                             {
                                 Id = id,

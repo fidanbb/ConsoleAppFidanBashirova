@@ -41,7 +41,7 @@ namespace Repository.Repositories
         public List<T> GetAllByExpression(Expression<Func<T, bool>> expression)
         {
             List<T> searchedData = AppDbContext<T>.datas.Where(expression.Compile()).ToList();
-
+            
 
             if (!searchedData.Any())
             {

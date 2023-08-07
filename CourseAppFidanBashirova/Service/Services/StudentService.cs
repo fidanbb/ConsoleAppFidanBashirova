@@ -48,6 +48,11 @@ namespace Service.Services
         {
             return _studentRepository.GetById(id);
         }
+
+        public List<Student> SortByAge()
+        {
+            return _studentRepository.SortByAge();
+        }
     }
 }
 

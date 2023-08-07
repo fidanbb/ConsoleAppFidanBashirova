@@ -277,6 +277,287 @@ namespace CourseAppFidanBashirova.Controllers
             }
         }
 
+        public void SortByAge()
+        {
+            List<Student> students = _studentService.SortByAge();
+
+
+            if (students is null)
+            {
+                ConsoleColor.Red.WriteConsole("There is no student yet, Add operation again");
+            }
+
+            else
+            {
+                foreach (var student in students)
+                {
+                    string data = $"{student.Id} - {student.FullName} - {student.Age} - {student.Address}" +
+                         $" - {student.PhoneNumber} - {student.StudentGroup.Name}";
+                    ConsoleColor.Green.WriteConsole(data);
+                }
+
+                ConsoleColor.Cyan.WriteConsole("Please add operation again");
+            }
+        }
+
+        public void Edit()
+        {
+            List<Student> students = _studentService.GetAll();
+
+            if (students is null)
+            {
+                ConsoleColor.Red.WriteConsole("There is no student yet, Add operation again");
+            }
+
+            else
+            {
+                ConsoleColor.Blue.WriteConsole("Add Student Id");
+            Id: string idStr = Console.ReadLine();
+
+                int id;
+
+                bool IsCorrectId = int.TryParse(idStr, out id);
+
+                if (IsCorrectId)
+                {
+                    Student student = _studentService.GetById(id);
+
+                    if (student is null)
+                    {
+                        ConsoleColor.Red.WriteConsole("Data not found,Write id again");
+                        goto Id;
+                    }
+
+                    else
+                    {
+                        ConsoleColor.Blue.WriteConsole("Add New FullName");
+                    FullName: string fullName = Console.ReadLine();
+
+                        if (string.IsNullOrWhiteSpace(fullName))
+                        {
+                            fullName = student.FullName;
+                        }
+
+                        ConsoleColor.Blue.WriteConsole("Add New Age");
+                    Age: string ageStr = Console.ReadLine();
+
+                        int age;
+
+                        bool isCorrectAge = int.TryParse(ageStr, out age);
+
+                        if (string.IsNullOrWhiteSpace(ageStr))
+                        {
+                            age = student.Age;
+
+                            ConsoleColor.Blue.WriteConsole("Add New Address");
+                        Address: string address = Console.ReadLine();
+
+                            if (string.IsNullOrWhiteSpace(address))
+                            {
+                                address = student.Address;
+                            }
+
+                            ConsoleColor.Blue.WriteConsole("Add New Phone number");
+                        PhoneNumber: string phoneNumber = Console.ReadLine();
+
+
+                            if (string.IsNullOrWhiteSpace(phoneNumber))
+                            {
+                                phoneNumber = student.PhoneNumber;
+                            }
+
+                            if (!phoneNumber.StringRegEx(@"\d"))
+                            {
+                                ConsoleColor.Red.WriteConsole("PhoneNumber cannot have strings, please add phoneNumber again");
+                                goto PhoneNumber;
+                            }
+
+                            ConsoleColor.Blue.WriteConsole("Add GroupId");
+                        GroupId: string groupIdStr = Console.ReadLine();
+
+                            int groupId;
+
+                            bool isCorrectGroupId = int.TryParse(groupIdStr, out groupId);
+
+                            if (string.IsNullOrWhiteSpace(groupIdStr))
+                            {
+                                groupId = student.StudentGroup.Id;
+
+                                Group group = _groupService.GetById(groupId);
+
+                                Student newStudent = new()
+                                {
+                                    Id = id,
+                                    FullName = fullName,
+                                    Age = age,
+                                    Address = address,
+                                    PhoneNumber = phoneNumber,
+                                    StudentGroup = group
+                                };
+
+                                _studentService.Edit(newStudent);
+                                ConsoleColor.Green.WriteConsole("Student Edited");
+                            }
+                            else
+                            {
+                                if (isCorrectGroupId)
+                                {
+                                    Group group = _groupService.GetById(groupId);
+
+                                    if (group is null)
+                                    {
+                                        ConsoleColor.Red.WriteConsole("Group not found, add groupId again");
+                                        goto GroupId;
+                                    }
+                                    else
+                                    {
+                                        Student newStudent = new()
+                                        {
+                                            Id = id,
+                                            FullName = fullName,
+                                            Age = age,
+                                            Address = address,
+                                            PhoneNumber = phoneNumber,
+                                            StudentGroup = group
+
+                                        };
+
+
+
+                                        _studentService.Edit(newStudent);
+                                        ConsoleColor.Green.WriteConsole("Student Edited");
+                                    }
+
+                                }
+                                else
+                                {
+                                    ConsoleColor.Red.WriteConsole("Please add correct id format again");
+                                    goto GroupId;
+                                }
+                            }
+
+
+                        }
+
+                        else
+                        {
+                            if (isCorrectAge)
+                            {
+                                ConsoleColor.Blue.WriteConsole("Add New Address");
+                            Address: string address = Console.ReadLine();
+
+                                if (string.IsNullOrWhiteSpace(address))
+                                {
+                                    address = student.Address;
+                                }
+
+                                ConsoleColor.Blue.WriteConsole("Add New Phone number");
+                            PhoneNumber: string phoneNumber = Console.ReadLine();
+
+
+                                if (string.IsNullOrWhiteSpace(phoneNumber))
+                                {
+                                    phoneNumber = student.PhoneNumber;
+                                }
+
+                                if (!phoneNumber.StringRegEx(@"\d"))
+                                {
+                                    ConsoleColor.Red.WriteConsole("PhoneNumber cannot have strings, please add phoneNumber again");
+                                    goto PhoneNumber;
+                                }
+
+
+                                ConsoleColor.Blue.WriteConsole("Add GroupId");
+                            GroupId: string groupIdStr = Console.ReadLine();
+
+                                int groupId;
+
+                                bool isCorrectGroupId = int.TryParse(groupIdStr, out groupId);
+
+                                if (string.IsNullOrWhiteSpace(groupIdStr))
+                                {
+                                    groupId = student.StudentGroup.Id;
+
+                                    Group group = _groupService.GetById(groupId);
+
+                                    Student newStudent = new()
+                                    {
+                                        Id = id,
+                                        FullName = fullName,
+                                        Age = age,
+                                        Address = address,
+                                        PhoneNumber = phoneNumber,
+                                        StudentGroup = group
+                                    };
+
+                                    _studentService.Edit(newStudent);
+                                    ConsoleColor.Green.WriteConsole("Student Edited");
+                                }
+
+                                else
+                                {
+                                    if (isCorrectGroupId)
+                                    {
+                                        Group group = _groupService.GetById(groupId);
+
+                                        if (group is null)
+                                        {
+                                            ConsoleColor.Red.WriteConsole("Group not found, add groupId again");
+                                            goto GroupId;
+                                        }
+                                        else
+                                        {
+                                            Student newStudent = new()
+                                            {
+                                                Id = id,
+                                                FullName = fullName,
+                                                Age = age,
+                                                Address = address,
+                                                PhoneNumber = phoneNumber,
+                                                StudentGroup = group
+
+                                            };
+
+
+
+                                            _studentService.Edit(newStudent);
+                                            ConsoleColor.Green.WriteConsole("Student Edited");
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        ConsoleColor.Red.WriteConsole("Please add correct id format again");
+                                        goto GroupId;
+                                    }
+                                }
+
+
+
+                            }
+                            else
+                            {
+                                ConsoleColor.Red.WriteConsole("Please add correct age format again");
+                                goto Age;
+                            }
+                        }
+                        
+                        ConsoleColor.Cyan.WriteConsole("Please add operation again");
+
+                        
+                    }
+
+                }
+
+                else
+                {
+                    ConsoleColor.Red.WriteConsole("Please add id format again");
+                    goto Id;
+                }
+            }
+        }
+
 	}
 }
+
 

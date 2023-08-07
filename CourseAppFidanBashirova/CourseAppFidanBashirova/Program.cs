@@ -74,7 +74,7 @@ AccountOperation: string accountOperationStr = Console.ReadLine();
                         studentController.Delete();
                         goto Operation;
                     case (int)Operations.EditStudent:
-                        Console.WriteLine("edit");
+                        studentController.Edit();
                         goto Operation;
                     case (int)Operations.GetAllStudents:
                         studentController.GetAll();
@@ -86,7 +86,7 @@ AccountOperation: string accountOperationStr = Console.ReadLine();
                         studentController.SearchByFullName();
                         goto Operation;
                     case (int)Operations.SortStudentByAge:
-                        Console.WriteLine("sort");
+                        studentController.SortByAge();
                         goto Operation;
                     default:
                         ConsoleColor.Red.WriteConsole("Please write correct option");
