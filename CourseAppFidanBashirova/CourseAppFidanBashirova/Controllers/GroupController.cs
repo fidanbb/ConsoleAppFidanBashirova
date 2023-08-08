@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Linq;
 using Domain.Models;
 using Service.Helpers.Extensions;
 using Service.Services;
@@ -22,7 +23,13 @@ namespace CourseAppFidanBashirova.Controllers
 
             if (string.IsNullOrWhiteSpace(groupName))
             {
-                ConsoleColor.Red.WriteConsole("GroupName can not be null, please add GroupName again");
+                ConsoleColor.Red.WriteConsole("Group Name can not be null, please add Group Name again");
+                goto GroupName;
+            }
+
+            if (groupName.StringRegEx(@"^(?![A-Z])[^\w\s]+$"))
+            {
+                ConsoleColor.Red.WriteConsole("Group Name cannot have special characters, please add group name again");
                 goto GroupName;
             }
 
@@ -57,14 +64,26 @@ namespace CourseAppFidanBashirova.Controllers
 
             if (isCorrectCapacity)
 			{
-				Group group = new()
-				{
-					Name = groupName,
-					Capacity = capacity
-				};
-				_groupService.Create(group);
-                ConsoleColor.Green.WriteConsole("Group Created");
-                ConsoleColor.Cyan.WriteConsole("Please add operation again");
+
+                if (capacity>5 && capacity<20)
+                {
+                    Group group = new()
+                    {
+                        Name = groupName,
+                        Capacity = capacity
+                    };
+                    _groupService.Create(group);
+                    ConsoleColor.Green.WriteConsole("Group Created");
+                    ConsoleColor.Cyan.WriteConsole("Please add operation again");
+                }
+
+                else
+                {
+                    ConsoleColor.Red.WriteConsole("Capacity must be between 5 and 20, please add capacity again");
+                    goto Capacity;
+
+                }
+				
             }
 
 			else
@@ -297,13 +316,15 @@ namespace CourseAppFidanBashirova.Controllers
                     goto Id;
                 }
 
+
+
                 if (IsCorrectId)
                 {
                     Group group = _groupService.GetById(id);
 
                     if (group is null)
                     {
-                        ConsoleColor.Red.WriteConsole("Data not found,Write id again");
+                        ConsoleColor.Red.WriteConsole("Group not found,Write id again");
                         goto Id;
                     }
 
@@ -315,6 +336,12 @@ namespace CourseAppFidanBashirova.Controllers
                         if (string.IsNullOrWhiteSpace(name))
                         {
                             name = group.Name;
+                        }
+
+                        if (name.StringRegEx(@"^(?![A-Z])[^\w\s]+$"))
+                        {
+                            ConsoleColor.Red.WriteConsole("Group Name cannot have special characters, please add group name again");
+                            goto Name;
                         }
 
                         ConsoleColor.Blue.WriteConsole("Edit Capacity");
@@ -340,13 +367,27 @@ namespace CourseAppFidanBashirova.Controllers
                         {
                             if (isCorrectCapacity)
                             {
-                                Group newGroup = new()
+                                if (capacity > 5 && capacity < 20)
                                 {
-                                    Id = id,
-                                    Name = name,
-                                    Capacity = capacity
-                                };
-                                _groupService.Edit(newGroup);
+                                    Group newGroup = new()
+                                    {
+                                        Id = id,
+                                        Name = name,
+                                        Capacity = capacity
+                                    };
+                                    _groupService.Edit(newGroup);
+                                }
+                                else
+                                {
+                                    ConsoleColor.Red.WriteConsole("Capacity must be between 5 and 20,add capacity again");
+                                    goto Capacity;
+                                }
+
+                            }
+                            else
+                            {
+                                ConsoleColor.Red.WriteConsole("Please add capacity format again");
+                                goto Capacity;
                             }
 
                             ConsoleColor.Green.WriteConsole("Group Edited");
