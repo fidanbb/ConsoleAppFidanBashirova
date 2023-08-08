@@ -309,7 +309,7 @@ namespace CourseAppFidanBashirova.Controllers
 
                     else
                     {
-                        ConsoleColor.Blue.WriteConsole("Add New Group Name");
+                        ConsoleColor.Blue.WriteConsole("Edit Group Name");
                     Name: string name = Console.ReadLine();
 
                         if (string.IsNullOrWhiteSpace(name))
@@ -317,7 +317,7 @@ namespace CourseAppFidanBashirova.Controllers
                             name = group.Name;
                         }
 
-                        ConsoleColor.Blue.WriteConsole("Add New Group Capacity");
+                        ConsoleColor.Blue.WriteConsole("Edit Capacity");
                     Capacity: string capacityStr = Console.ReadLine();
 
                         int capacity;

@@ -222,7 +222,7 @@ namespace CourseAppFidanBashirova.Controllers
 
             else
             {
-                ConsoleColor.Blue.WriteConsole("Add Stuedent Id");
+                ConsoleColor.Blue.WriteConsole("Add Student Id");
             Id: string idStr = Console.ReadLine();
                 int id;
                 bool isCorrecId = int.TryParse(idStr, out id);
@@ -355,7 +355,7 @@ namespace CourseAppFidanBashirova.Controllers
 
                     if (student is null)
                     {
-                        ConsoleColor.Red.WriteConsole("Data not found,Write id again");
+                        ConsoleColor.Red.WriteConsole("Student not found,Write id again");
                         goto Id;
                     }
 
