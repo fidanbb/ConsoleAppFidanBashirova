@@ -71,6 +71,12 @@ namespace CourseAppFidanBashirova.Controllers
 
             bool isCorrectAge = int.TryParse(ageStr, out age);
 
+            if (string.IsNullOrWhiteSpace(ageStr))
+            {
+                ConsoleColor.Red.WriteConsole("Age can not be null, please add age again");
+                goto Age;
+            }
+
             if (!isCorrectAge)
             {
                 ConsoleColor.Red.WriteConsole("Please add age format again");
@@ -82,6 +88,12 @@ namespace CourseAppFidanBashirova.Controllers
 
             Email: string email = Console.ReadLine();
 
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                ConsoleColor.Red.WriteConsole("Email can not be null, please add email again");
+                goto Email;
+            }
+
             if (!email.StringRegEx(@"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
             {
                 ConsoleColor.Red.WriteConsole("Please add correct email format again");
@@ -91,6 +103,13 @@ namespace CourseAppFidanBashirova.Controllers
             ConsoleColor.Blue.WriteConsole("Add Password");
 
         Password: string password = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                ConsoleColor.Red.WriteConsole("Password can not be null, please add password again");
+                goto Password;
+            }
+
 
             if (!password.StringRegEx(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$"))
             {
