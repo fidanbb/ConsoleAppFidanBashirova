@@ -18,12 +18,12 @@ namespace CourseAppFidanBashirova.Controllers
 		public void Create()
 		{
 			ConsoleColor.Blue.WriteConsole("Add Group Name");
-			Name:  string name = Console.ReadLine();
+			GroupName:  string groupName = Console.ReadLine();
 
-            if (string.IsNullOrWhiteSpace(name))
+            if (string.IsNullOrWhiteSpace(groupName))
             {
-                ConsoleColor.Red.WriteConsole("Name can not be null, please add name again");
-                goto Name;
+                ConsoleColor.Red.WriteConsole("GroupName can not be null, please add GroupName again");
+                goto GroupName;
             }
 
             List<Group> groups = _groupService.GetAll();
@@ -32,10 +32,10 @@ namespace CourseAppFidanBashirova.Controllers
             {
                 foreach (var group in groups)
                 {
-                    if (group.Name.Trim().ToLower() == name.Trim().ToLower())
+                    if (group.Name.Trim().ToLower() == groupName.Trim().ToLower())
                     {
-                        ConsoleColor.Red.WriteConsole("This name already exists, add group name again");
-                        goto Name;
+                        ConsoleColor.Red.WriteConsole("This GroupName already exists, add group name again");
+                        goto GroupName;
                     }
                 }
             }
@@ -47,11 +47,19 @@ namespace CourseAppFidanBashirova.Controllers
 
 			bool isCorrectCapacity = int.TryParse(capacityStr, out capacity);
 
-			if (isCorrectCapacity)
+
+            if (string.IsNullOrWhiteSpace(capacityStr))
+            {
+                ConsoleColor.Red.WriteConsole("Capacity can not be null, please add capacity again");
+                goto Capacity;
+            }
+
+
+            if (isCorrectCapacity)
 			{
 				Group group = new()
 				{
-					Name = name,
+					Name = groupName,
 					Capacity = capacity
 				};
 				_groupService.Create(group);
@@ -111,6 +119,15 @@ namespace CourseAppFidanBashirova.Controllers
 
                 bool IsCorrectId = int.TryParse(idStr, out id);
 
+
+                if (string.IsNullOrWhiteSpace(idStr))
+                {
+                    ConsoleColor.Red.WriteConsole("Id can not be null, please add Id again");
+                    goto Id;
+                }
+
+
+
                 if (IsCorrectId)
                 {
                     var group = _groupService.GetById(id);
@@ -154,6 +171,12 @@ namespace CourseAppFidanBashirova.Controllers
                 int id;
 
                 bool IsCorrectId = int.TryParse(idStr, out id);
+
+                if (string.IsNullOrWhiteSpace(idStr))
+                {
+                    ConsoleColor.Red.WriteConsole("Id can not be null, please add Id again");
+                    goto Id;
+                }
 
                 if (IsCorrectId)
                 {
@@ -207,7 +230,7 @@ namespace CourseAppFidanBashirova.Controllers
 
                 if (searchedGroups is null)
                 {
-                    ConsoleColor.Red.WriteConsole("Data not Found,add searchText again");
+                    ConsoleColor.Red.WriteConsole("Data not found,add searchText again");
                     goto SearchText;
                 }
 
@@ -266,6 +289,13 @@ namespace CourseAppFidanBashirova.Controllers
                 int id;
 
                 bool IsCorrectId = int.TryParse(idStr, out id);
+
+
+                if (string.IsNullOrWhiteSpace(idStr))
+                {
+                    ConsoleColor.Red.WriteConsole("Id can not be null, please add Id again");
+                    goto Id;
+                }
 
                 if (IsCorrectId)
                 {

@@ -55,6 +55,13 @@ namespace CourseAppFidanBashirova.Controllers
 
                 bool isCorrectAge = int.TryParse(ageStr, out age);
 
+
+                if (string.IsNullOrWhiteSpace(ageStr))
+                {
+                    ConsoleColor.Red.WriteConsole("Age can not be null, please add age again");
+                    goto Age;
+                }
+
                 if (isCorrectAge)
                 {
 
@@ -83,9 +90,15 @@ namespace CourseAppFidanBashirova.Controllers
                     }
 
                     ConsoleColor.Blue.WriteConsole("Add Group Id");
-                Id: string groupIdStr = Console.ReadLine();
+                GroupId: string groupIdStr = Console.ReadLine();
                     int groupId;
                     bool isCorrectGroupId = int.TryParse(groupIdStr, out groupId);
+
+                    if (string.IsNullOrWhiteSpace(groupIdStr))
+                    {
+                        ConsoleColor.Red.WriteConsole("Id can not be null, please add Id again");
+                        goto GroupId;
+                    }
 
                     if (isCorrectGroupId)
                     {
@@ -110,14 +123,14 @@ namespace CourseAppFidanBashirova.Controllers
                         else
                         {
                             ConsoleColor.Red.WriteConsole("Group does not exist, please write groupId again");
-                            goto Id;
+                            goto GroupId;
                         }
                     }
 
                     else
                     {
                         ConsoleColor.Red.WriteConsole("Please write correct id format");
-                        goto Id;
+                        goto GroupId;
                     }
 
                 }
@@ -168,6 +181,12 @@ namespace CourseAppFidanBashirova.Controllers
                 int id;
                 bool isCorrecId = int.TryParse(idStr, out id);
 
+                if (string.IsNullOrWhiteSpace(idStr))
+                {
+                    ConsoleColor.Red.WriteConsole("Id can not be null, please add Id again");
+                    goto Id;
+                }
+
                 if (isCorrecId)
                 {
                     Student student = _studentService.GetById(id);
@@ -207,6 +226,12 @@ namespace CourseAppFidanBashirova.Controllers
             Id: string idStr = Console.ReadLine();
                 int id;
                 bool isCorrecId = int.TryParse(idStr, out id);
+
+                if (string.IsNullOrWhiteSpace(idStr))
+                {
+                    ConsoleColor.Red.WriteConsole("Id can not be null, please add Id again");
+                    goto Id;
+                }
 
                 if (isCorrecId)
                 {
@@ -318,6 +343,12 @@ namespace CourseAppFidanBashirova.Controllers
 
                 bool IsCorrectId = int.TryParse(idStr, out id);
 
+                if (string.IsNullOrWhiteSpace(idStr))
+                {
+                    ConsoleColor.Red.WriteConsole("Id can not be null, please add Id again");
+                    goto Id;
+                }
+
                 if (IsCorrectId)
                 {
                     Student student = _studentService.GetById(id);
@@ -330,7 +361,7 @@ namespace CourseAppFidanBashirova.Controllers
 
                     else
                     {
-                        ConsoleColor.Blue.WriteConsole("Add New FullName");
+                        ConsoleColor.Blue.WriteConsole("Edit FullName");
                     FullName: string fullName = Console.ReadLine();
 
                         if (string.IsNullOrWhiteSpace(fullName))
@@ -338,7 +369,7 @@ namespace CourseAppFidanBashirova.Controllers
                             fullName = student.FullName;
                         }
 
-                        ConsoleColor.Blue.WriteConsole("Add New Age");
+                        ConsoleColor.Blue.WriteConsole("Edit Age");
                     Age: string ageStr = Console.ReadLine();
 
                         int age;
@@ -349,7 +380,7 @@ namespace CourseAppFidanBashirova.Controllers
                         {
                             age = student.Age;
 
-                            ConsoleColor.Blue.WriteConsole("Add New Address");
+                            ConsoleColor.Blue.WriteConsole("Edit Address");
                         Address: string address = Console.ReadLine();
 
                             if (string.IsNullOrWhiteSpace(address))
@@ -357,7 +388,7 @@ namespace CourseAppFidanBashirova.Controllers
                                 address = student.Address;
                             }
 
-                            ConsoleColor.Blue.WriteConsole("Add New Phone number");
+                            ConsoleColor.Blue.WriteConsole("Edit Phone Number");
                         PhoneNumber: string phoneNumber = Console.ReadLine();
 
 
@@ -372,7 +403,7 @@ namespace CourseAppFidanBashirova.Controllers
                                 goto PhoneNumber;
                             }
 
-                            ConsoleColor.Blue.WriteConsole("Add GroupId");
+                            ConsoleColor.Blue.WriteConsole("Edit GroupId");
                         GroupId: string groupIdStr = Console.ReadLine();
 
                             int groupId;
@@ -443,7 +474,7 @@ namespace CourseAppFidanBashirova.Controllers
                         {
                             if (isCorrectAge)
                             {
-                                ConsoleColor.Blue.WriteConsole("Add New Address");
+                                ConsoleColor.Blue.WriteConsole("Edit Address");
                             Address: string address = Console.ReadLine();
 
                                 if (string.IsNullOrWhiteSpace(address))
@@ -451,7 +482,7 @@ namespace CourseAppFidanBashirova.Controllers
                                     address = student.Address;
                                 }
 
-                                ConsoleColor.Blue.WriteConsole("Add New Phone number");
+                                ConsoleColor.Blue.WriteConsole("Edit PhoneNumber");
                             PhoneNumber: string phoneNumber = Console.ReadLine();
 
 
@@ -467,7 +498,7 @@ namespace CourseAppFidanBashirova.Controllers
                                 }
 
 
-                                ConsoleColor.Blue.WriteConsole("Add GroupId");
+                                ConsoleColor.Blue.WriteConsole("Edit GroupId");
                             GroupId: string groupIdStr = Console.ReadLine();
 
                                 int groupId;

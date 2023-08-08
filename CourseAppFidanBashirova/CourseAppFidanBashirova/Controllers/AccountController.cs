@@ -172,8 +172,6 @@ namespace CourseAppFidanBashirova.Controllers
                 string password = Console.ReadLine();
 
 
-
-
                 bool isLogin = _accountService.Login(email, password);
 
 
