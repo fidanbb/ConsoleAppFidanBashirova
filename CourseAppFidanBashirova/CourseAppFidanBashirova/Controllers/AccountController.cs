@@ -83,6 +83,11 @@ namespace CourseAppFidanBashirova.Controllers
                 goto Age;
             }
 
+            if (age<15 || age>50)
+            {
+                ConsoleColor.Red.WriteConsole("Age must be between 15 and 50, add age again");
+                goto Age;
+            }
 
             ConsoleColor.Blue.WriteConsole("Add Email");
 

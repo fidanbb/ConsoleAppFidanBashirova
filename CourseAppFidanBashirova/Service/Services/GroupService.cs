@@ -61,10 +61,7 @@ namespace Service.Services
             return _groupRepository.SortByCapacity();
         }
 
-        public void Update(Group group)
-        {
-            _groupRepository.Update(group);
-        }
+       
     }
 }
 

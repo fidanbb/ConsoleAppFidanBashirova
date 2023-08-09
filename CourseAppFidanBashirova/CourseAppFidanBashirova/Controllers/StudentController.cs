@@ -65,6 +65,12 @@ namespace CourseAppFidanBashirova.Controllers
                 if (isCorrectAge)
                 {
 
+                    if (age < 15 || age > 50)
+                    {
+                        ConsoleColor.Red.WriteConsole("Age must be between 15 and 50, add age again");
+                        goto Age;
+                    }
+
                     ConsoleColor.Blue.WriteConsole("Add Student's Address");
                 Address: string address = Console.ReadLine();
 
@@ -453,6 +459,13 @@ namespace CourseAppFidanBashirova.Controllers
                                     }
                                     else
                                     {
+
+                                        if (_groupService.IsGroupFull(group))
+                                        {
+                                            ConsoleColor.Red.WriteConsole("This Group is full, add groupId again");
+                                            goto GroupId;
+                                        }
+
                                         Student newStudent = new()
                                         {
                                             Id = id,
@@ -485,6 +498,12 @@ namespace CourseAppFidanBashirova.Controllers
                         {
                             if (isCorrectAge)
                             {
+                                if (age < 15 || age > 50)
+                                {
+                                    ConsoleColor.Red.WriteConsole("Age must be between 15 and 50, add age again");
+                                    goto Age;
+                                }
+
                                 ConsoleColor.Blue.WriteConsole("Edit Address");
                             Address: string address = Console.ReadLine();
 
@@ -549,6 +568,12 @@ namespace CourseAppFidanBashirova.Controllers
                                         }
                                         else
                                         {
+                                            if (_groupService.IsGroupFull(group))
+                                            {
+                                                ConsoleColor.Red.WriteConsole("Group is full, add groupId again");
+                                                goto GroupId;
+                                            }
+
                                             Student newStudent = new()
                                             {
                                                 Id = id,

@@ -13,8 +13,10 @@ namespace Service.Services.Interfaces
         List<Student> GetAll();
         List<Student> GetAllByExpression(Expression<Func<Student, bool>> expression);
         List<Student> SortByAge();
-       
-       
+        
+
+
+
     }
 }
 

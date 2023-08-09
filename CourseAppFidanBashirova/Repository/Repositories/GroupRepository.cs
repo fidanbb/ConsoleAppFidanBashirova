@@ -26,9 +26,10 @@ namespace Repository.Repositories
             return group.Students.Count >= group.Capacity;
         }
 
-        public void Update(Group group)
+        public void Edit(Group group)
         {
             Group exsistingGroup = AppDbContext<Group>.datas.FirstOrDefault(m => m.Id == group.Id);
+
             exsistingGroup.Name = group.Name;
             exsistingGroup.Capacity = group.Capacity;
         }

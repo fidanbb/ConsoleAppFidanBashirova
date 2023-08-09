@@ -14,7 +14,7 @@ namespace Service.Services.Interfaces
         List<Group> GetAllByExpression(Expression<Func<Group, bool>> expression);
         List<Group> SortByCapacity();
         bool IsGroupFull(Group group);
-        void Update(Group group);
+        
 
     }
 }

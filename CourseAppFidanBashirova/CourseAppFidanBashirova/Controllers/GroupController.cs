@@ -65,7 +65,7 @@ namespace CourseAppFidanBashirova.Controllers
             if (isCorrectCapacity)
 			{
 
-                if (capacity>1 && capacity<5)
+                if (capacity>1 && capacity<10)
                 {
                     Group group = new()
                     {
@@ -79,7 +79,7 @@ namespace CourseAppFidanBashirova.Controllers
 
                 else
                 {
-                    ConsoleColor.Red.WriteConsole("Capacity must be between 1 and 5, please add capacity again");
+                    ConsoleColor.Red.WriteConsole("Capacity must be between 1 and 10, please add capacity again");
                     goto Capacity;
                 }
 				
@@ -370,14 +370,14 @@ namespace CourseAppFidanBashirova.Controllers
                                 Name = name,
                                 Capacity = capacity
                             };
-                            _groupService.Update(newGroup);
+                            _groupService.Edit(newGroup);
                             ConsoleColor.Green.WriteConsole("Group Edited");
                         }
                         else
                         {
                             if (isCorrectCapacity)
                             {
-                                if (capacity > 1 && capacity < 5)
+                                if (capacity > 1 && capacity < 10)
                                 {
                                     Group newGroup = new()
                                     {
@@ -385,11 +385,11 @@ namespace CourseAppFidanBashirova.Controllers
                                         Name = name,
                                         Capacity = capacity
                                     };
-                                    _groupService.Update(newGroup);
+                                    _groupService.Edit(newGroup);
                                 }
                                 else
                                 {
-                                    ConsoleColor.Red.WriteConsole("Capacity must be between 1 and 5,add capacity again");
+                                    ConsoleColor.Red.WriteConsole("Capacity must be between 1 and 10,add capacity again");
                                     goto Capacity;
                                 }
 

@@ -19,6 +19,17 @@ namespace Repository.Repositories
 
             return sortedData;
         }
+
+        public void Edit(Student student)
+        {
+            Student exsistingStudent = AppDbContext<Student>.datas.FirstOrDefault(m => m.Id == student.Id);
+
+            exsistingStudent.FullName = student.FullName;
+            exsistingStudent.Age = student.Age;
+            exsistingStudent.Address = student.Address;
+            exsistingStudent.PhoneNumber = student.PhoneNumber;
+            exsistingStudent.StudentGroup = student.StudentGroup;
+        }
     }
 }
 
