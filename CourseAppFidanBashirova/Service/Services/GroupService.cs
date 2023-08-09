@@ -51,9 +51,19 @@ namespace Service.Services
             return _groupRepository.GetById(id);
         }
 
+        public bool IsGroupFull(Group group)
+        {
+            return _groupRepository.IsGroupFull(group);
+        }
+
         public List<Group> SortByCapacity()
         {
             return _groupRepository.SortByCapacity();
+        }
+
+        public void Update(Group group)
+        {
+            _groupRepository.Update(group);
         }
     }
 }

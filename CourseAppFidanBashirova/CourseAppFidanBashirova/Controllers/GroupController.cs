@@ -65,7 +65,7 @@ namespace CourseAppFidanBashirova.Controllers
             if (isCorrectCapacity)
 			{
 
-                if (capacity>5 && capacity<20)
+                if (capacity>1 && capacity<5)
                 {
                     Group group = new()
                     {
@@ -79,9 +79,8 @@ namespace CourseAppFidanBashirova.Controllers
 
                 else
                 {
-                    ConsoleColor.Red.WriteConsole("Capacity must be between 5 and 20, please add capacity again");
+                    ConsoleColor.Red.WriteConsole("Capacity must be between 1 and 5, please add capacity again");
                     goto Capacity;
-
                 }
 				
             }
@@ -333,6 +332,15 @@ namespace CourseAppFidanBashirova.Controllers
                         ConsoleColor.Blue.WriteConsole("Edit Group Name");
                     Name: string name = Console.ReadLine();
 
+                        foreach (var item in groups)
+                        {
+                            if (item.Name.Trim().ToLower() == name.Trim().ToLower())
+                            {
+                                ConsoleColor.Red.WriteConsole("This Group Name has already taken, edit name again");
+                                goto Name;
+                            }
+                        }
+
                         if (string.IsNullOrWhiteSpace(name))
                         {
                             name = group.Name;
@@ -343,6 +351,8 @@ namespace CourseAppFidanBashirova.Controllers
                             ConsoleColor.Red.WriteConsole("Group Name cannot have special characters, please add group name again");
                             goto Name;
                         }
+
+                       
 
                         ConsoleColor.Blue.WriteConsole("Edit Capacity");
                     Capacity: string capacityStr = Console.ReadLine();
@@ -360,14 +370,14 @@ namespace CourseAppFidanBashirova.Controllers
                                 Name = name,
                                 Capacity = capacity
                             };
-                            _groupService.Edit(newGroup);
+                            _groupService.Update(newGroup);
                             ConsoleColor.Green.WriteConsole("Group Edited");
                         }
                         else
                         {
                             if (isCorrectCapacity)
                             {
-                                if (capacity > 5 && capacity < 20)
+                                if (capacity > 1 && capacity < 5)
                                 {
                                     Group newGroup = new()
                                     {
@@ -375,11 +385,11 @@ namespace CourseAppFidanBashirova.Controllers
                                         Name = name,
                                         Capacity = capacity
                                     };
-                                    _groupService.Edit(newGroup);
+                                    _groupService.Update(newGroup);
                                 }
                                 else
                                 {
-                                    ConsoleColor.Red.WriteConsole("Capacity must be between 5 and 20,add capacity again");
+                                    ConsoleColor.Red.WriteConsole("Capacity must be between 1 and 5,add capacity again");
                                     goto Capacity;
                                 }
 

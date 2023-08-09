@@ -11,6 +11,7 @@ namespace Service.Services
 	{
         private readonly IStudentRepository _studentRepository;
         private int _count = 1;
+        
 
 		public StudentService()
 		{
@@ -20,8 +21,10 @@ namespace Service.Services
         public void Create(Student student)
         {
             student.Id = _count;
+            student.StudentGroup.Students.Add(student);
             _studentRepository.Create(student);
             _count++;
+           
         }
 
         public void Delete(Student student)
@@ -53,6 +56,8 @@ namespace Service.Services
         {
             return _studentRepository.SortByAge();
         }
+
+       
     }
 }
 

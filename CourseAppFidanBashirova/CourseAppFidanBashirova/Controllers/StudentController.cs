@@ -104,20 +104,31 @@ namespace CourseAppFidanBashirova.Controllers
                     {
                         Group group = _groupService.GetById(groupId);
 
+                      
+
                         if (group is not null)
                         {
-                            Student student = new()
+                            if (_groupService.IsGroupFull(group))
                             {
-                                FullName = fullName,
-                                Age = age,
-                                Address = address,
-                                PhoneNumber = phoneNumber,
-                                StudentGroup = group
-                            };
+                                ConsoleColor.Red.WriteConsole("Group is full, add groupId again");
+                                goto GroupId;
+                            }
+                            else
+                            {
+                                Student student = new()
+                                {
+                                    FullName = fullName,
+                                    Age = age,
+                                    Address = address,
+                                    PhoneNumber = phoneNumber,
+                                    StudentGroup = group
+                                };
 
-                            _studentService.Create(student);
-                            ConsoleColor.Green.WriteConsole("Student Created");
-                            ConsoleColor.Cyan.WriteConsole("Please add operation again");
+                                _studentService.Create(student);
+                                ConsoleColor.Green.WriteConsole("Student Created");
+                                ConsoleColor.Cyan.WriteConsole("Please add operation again");
+                            }
+                            
 
                         }
                         else
