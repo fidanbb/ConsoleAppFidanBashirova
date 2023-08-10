@@ -34,7 +34,7 @@ namespace Repository.Repositories
             exsistingGroup.Capacity = group.Capacity;
         }
 
-        public bool IsAllGroupsFull(List<Group> groups) //method sehvdi duzelt
+        public bool IsAllGroupsFull(List<Group> groups) 
         {
             foreach (var group in groups)
             {

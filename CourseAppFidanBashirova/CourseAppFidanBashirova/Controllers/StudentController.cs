@@ -270,8 +270,9 @@ namespace CourseAppFidanBashirova.Controllers
 
                     }
 
-                    _studentService.Delete(student);
                     student.StudentGroup.Students.Remove(student);
+
+                    _studentService.Delete(student);
                     ConsoleColor.Green.WriteConsole("Student Deleted");
 
                     ConsoleColor.Cyan.WriteConsole("Please add operation again");

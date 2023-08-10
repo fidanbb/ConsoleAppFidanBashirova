@@ -207,9 +207,17 @@ namespace CourseAppFidanBashirova.Controllers
                         goto Id;
                     }
 
-                    _groupService.Delete(group);
-                    ConsoleColor.Green.WriteConsole("Group Deleted");
-                    ConsoleColor.Cyan.WriteConsole("Please add operation again");
+                    if (group.Students.Count > 0)
+                    {
+                        ConsoleColor.Red.WriteConsole("This group has students,you cannot delete it, add operation again");
+                    }
+
+                    else
+                    {
+                        _groupService.Delete(group);
+                        ConsoleColor.Green.WriteConsole("Group Deleted");
+                        ConsoleColor.Cyan.WriteConsole("Please add operation again");
+                    }
 
                 }
                 else
