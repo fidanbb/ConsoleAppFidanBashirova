@@ -28,140 +28,143 @@ namespace CourseAppFidanBashirova.Controllers
             }
             else
             {
-                //bool isAllGroupsGull = _groupService.IsAllGroupsFull(groups);
+                bool isAllGroupsFull = _groupService.IsAllGroupsFull(groups);
 
-                //if (true)
-                //{
-
-                //}
-
-                ConsoleColor.Blue.WriteConsole("Add Student's FullName");
-            FullName: string fullName = Console.ReadLine();
-
-                if (string.IsNullOrWhiteSpace(fullName))
+                if (isAllGroupsFull)
                 {
-                    ConsoleColor.Red.WriteConsole("FullName can not be null, please add name again");
-                    goto FullName;
-                }
-
-                if (fullName.StringRegEx(@"\d"))
-                {
-                    ConsoleColor.Red.WriteConsole("FullName cannot have digits, please add FullName again");
-                    goto FullName;
-                }
-
-                if (fullName.StringRegEx(@"^(?![A-Z])[^\w\s]+$"))
-                {
-                    ConsoleColor.Red.WriteConsole("FullName cannot have special characters, please add FullName again");
-                    goto FullName;
-                }
-
-                ConsoleColor.Blue.WriteConsole("Add Student's Age");
-            Age: string ageStr = Console.ReadLine();
-                int age;
-
-                bool isCorrectAge = int.TryParse(ageStr, out age);
-
-
-                if (string.IsNullOrWhiteSpace(ageStr))
-                {
-                    ConsoleColor.Red.WriteConsole("Age can not be null, please add age again");
-                    goto Age;
-                }
-
-                if (isCorrectAge)
-                {
-
-                    if (age < 15 || age > 50)
-                    {
-                        ConsoleColor.Red.WriteConsole("Age must be between 15 and 50, add age again");
-                        goto Age;
-                    }
-
-                    ConsoleColor.Blue.WriteConsole("Add Student's Address");
-                Address: string address = Console.ReadLine();
-
-                    if (string.IsNullOrWhiteSpace(address))
-                    {
-                        ConsoleColor.Red.WriteConsole("Address can not be null, please add address again");
-                        goto Address;
-                    }
-
-                    ConsoleColor.Blue.WriteConsole("Add Student's Phone number");
-                PhoneNumber: string phoneNumber = Console.ReadLine();
-
-                    if (string.IsNullOrWhiteSpace(phoneNumber))
-                    {
-                        ConsoleColor.Red.WriteConsole("PhoneNumber can not be null, please add phoneNumber again");
-                        goto PhoneNumber;
-                    }
-
-                    if (!phoneNumber.StringRegEx(@"\d"))
-                    {
-                        ConsoleColor.Red.WriteConsole("PhoneNumber cannot have strings, please add phoneNumber again");
-                        goto PhoneNumber;
-                    }
-
-                    ConsoleColor.Blue.WriteConsole("Add Group Id");
-                GroupId: string groupIdStr = Console.ReadLine();
-                    int groupId;
-                    bool isCorrectGroupId = int.TryParse(groupIdStr, out groupId);
-
-                    if (string.IsNullOrWhiteSpace(groupIdStr))
-                    {
-                        ConsoleColor.Red.WriteConsole("Id can not be null, please add Id again");
-                        goto GroupId;
-                    }
-
-                    if (isCorrectGroupId)
-                    {
-                        Group group = _groupService.GetById(groupId);
-
-                      
-
-                        if (group is not null)
-                        {
-                            if (_groupService.IsGroupFull(group))
-                            {
-                                ConsoleColor.Red.WriteConsole("Group is full, add groupId again");
-                                goto GroupId;
-                            }
-                            else
-                            {
-                                Student student = new()
-                                {
-                                    FullName = fullName,
-                                    Age = age,
-                                    Address = address,
-                                    PhoneNumber = phoneNumber,
-                                    StudentGroup = group
-                                };
-
-                                _studentService.Create(student);
-                                ConsoleColor.Green.WriteConsole("Student Created");
-                                ConsoleColor.Cyan.WriteConsole("Please add operation again");
-                            }
-                            
-
-                        }
-                        else
-                        {
-                            ConsoleColor.Red.WriteConsole("Group does not exist, please write groupId again");
-                            goto GroupId;
-                        }
-                    }
-
-                    else
-                    {
-                        ConsoleColor.Red.WriteConsole("Please write correct id format");
-                        goto GroupId;
-                    }
-
+                    ConsoleColor.Red.WriteConsole("All groups are full, please add operation again");
                 }
                 else
                 {
-                    ConsoleColor.Red.WriteConsole("Please write correct age format");
-                    goto Age;
+                    ConsoleColor.Blue.WriteConsole("Add Student's FullName");
+                FullName: string fullName = Console.ReadLine();
+
+                    if (string.IsNullOrWhiteSpace(fullName))
+                    {
+                        ConsoleColor.Red.WriteConsole("FullName can not be null, please add name again");
+                        goto FullName;
+                    }
+
+                    if (fullName.StringRegEx(@"\d"))
+                    {
+                        ConsoleColor.Red.WriteConsole("FullName cannot have digits, please add FullName again");
+                        goto FullName;
+                    }
+
+                    if (fullName.StringRegEx(@"^(?![A-Z])[^\w\s]+$"))
+                    {
+                        ConsoleColor.Red.WriteConsole("FullName cannot have special characters, please add FullName again");
+                        goto FullName;
+                    }
+
+                    ConsoleColor.Blue.WriteConsole("Add Student's Age");
+                Age: string ageStr = Console.ReadLine();
+                    int age;
+
+                    bool isCorrectAge = int.TryParse(ageStr, out age);
+
+
+                    if (string.IsNullOrWhiteSpace(ageStr))
+                    {
+                        ConsoleColor.Red.WriteConsole("Age can not be null, please add age again");
+                        goto Age;
+                    }
+
+                    if (isCorrectAge)
+                    {
+
+                        if (age < 15 || age > 50)
+                        {
+                            ConsoleColor.Red.WriteConsole("Age must be between 15 and 50, add age again");
+                            goto Age;
+                        }
+
+                        ConsoleColor.Blue.WriteConsole("Add Student's Address");
+                    Address: string address = Console.ReadLine();
+
+                        if (string.IsNullOrWhiteSpace(address))
+                        {
+                            ConsoleColor.Red.WriteConsole("Address can not be null, please add address again");
+                            goto Address;
+                        }
+
+                        ConsoleColor.Blue.WriteConsole("Add Student's Phone number");
+                    PhoneNumber: string phoneNumber = Console.ReadLine();
+
+                        if (string.IsNullOrWhiteSpace(phoneNumber))
+                        {
+                            ConsoleColor.Red.WriteConsole("PhoneNumber can not be null, please add phoneNumber again");
+                            goto PhoneNumber;
+                        }
+
+                        if (!phoneNumber.StringRegEx(@"\d"))
+                        {
+                            ConsoleColor.Red.WriteConsole("PhoneNumber cannot have strings, please add phoneNumber again");
+                            goto PhoneNumber;
+                        }
+
+                        ConsoleColor.Blue.WriteConsole("Add Group Id");
+                    GroupId: string groupIdStr = Console.ReadLine();
+                        int groupId;
+                        bool isCorrectGroupId = int.TryParse(groupIdStr, out groupId);
+
+                        if (string.IsNullOrWhiteSpace(groupIdStr))
+                        {
+                            ConsoleColor.Red.WriteConsole("Id can not be null, please add Id again");
+                            goto GroupId;
+                        }
+
+                        if (isCorrectGroupId)
+                        {
+                            Group group = _groupService.GetById(groupId);
+
+
+
+                            if (group is not null)
+                            {
+                                if (_groupService.IsGroupFull(group))
+                                {
+                                    ConsoleColor.Red.WriteConsole("This Group is full, add groupId again");
+                                    goto GroupId;
+                                }
+                                else
+                                {
+                                    Student student = new()
+                                    {
+                                        FullName = fullName,
+                                        Age = age,
+                                        Address = address,
+                                        PhoneNumber = phoneNumber,
+                                        StudentGroup = group
+                                    };
+
+                                    _studentService.Create(student);
+                                    ConsoleColor.Green.WriteConsole("Student Created");
+                                    ConsoleColor.Cyan.WriteConsole("Please add operation again");
+                                }
+
+
+                            }
+                            else
+                            {
+                                ConsoleColor.Red.WriteConsole("Group does not exist, please write groupId again");
+                                goto GroupId;
+                            }
+                        }
+
+                        else
+                        {
+                            ConsoleColor.Red.WriteConsole("Please write correct id format");
+                            goto GroupId;
+                        }
+
+                    }
+                    else
+                    {
+                        ConsoleColor.Red.WriteConsole("Please write correct age format");
+                        goto Age;
+                    }
+                
                 }
             }
 
@@ -394,6 +397,18 @@ namespace CourseAppFidanBashirova.Controllers
                             fullName = student.FullName;
                         }
 
+                        if (fullName.StringRegEx(@"\d"))
+                        {
+                            ConsoleColor.Red.WriteConsole("FullName cannot have digits, please edit FullName again");
+                            goto FullName;
+                        }
+
+                        if (fullName.StringRegEx(@"^(?![A-Z])[^\w\s]+$"))
+                        {
+                            ConsoleColor.Red.WriteConsole("FullName cannot have special characters, please edit FullName again");
+                            goto FullName;
+                        }
+
                         ConsoleColor.Blue.WriteConsole("Edit Age");
 
                     Age: string ageStr = Console.ReadLine();
@@ -423,9 +438,10 @@ namespace CourseAppFidanBashirova.Controllers
                                 phoneNumber = student.PhoneNumber;
                             }
 
+
                             if (!phoneNumber.StringRegEx(@"\d"))
                             {
-                                ConsoleColor.Red.WriteConsole("PhoneNumber cannot have strings, please add phoneNumber again");
+                                ConsoleColor.Red.WriteConsole("PhoneNumber cannot have strings, please edit phoneNumber again");
                                 goto PhoneNumber;
                             }
 

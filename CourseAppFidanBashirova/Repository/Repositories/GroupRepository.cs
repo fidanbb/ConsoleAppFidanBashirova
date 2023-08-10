@@ -38,12 +38,12 @@ namespace Repository.Repositories
         {
             foreach (var group in groups)
             {
-                if (group.Students.Count>=group.Capacity)
+                if (!IsGroupFull(group))
                 {
-                    return true;
+                    return false;
                 }
             }
-            return false;
+            return true;
 
         }
     }
