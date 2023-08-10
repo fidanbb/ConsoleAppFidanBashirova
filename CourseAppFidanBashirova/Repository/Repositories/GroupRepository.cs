@@ -32,6 +32,7 @@ namespace Repository.Repositories
 
             exsistingGroup.Name = group.Name;
             exsistingGroup.Capacity = group.Capacity;
+            exsistingGroup.Students = group.Students;
         }
 
         public bool IsAllGroupsFull(List<Group> groups) 

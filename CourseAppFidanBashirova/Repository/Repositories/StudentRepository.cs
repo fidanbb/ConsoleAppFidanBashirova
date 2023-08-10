@@ -29,6 +29,7 @@ namespace Repository.Repositories
             exsistingStudent.Address = student.Address;
             exsistingStudent.PhoneNumber = student.PhoneNumber;
             exsistingStudent.StudentGroup = student.StudentGroup;
+            
         }
     }
 }
