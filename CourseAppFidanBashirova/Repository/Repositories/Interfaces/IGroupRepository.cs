@@ -8,6 +8,7 @@ namespace Repository.Repositories.Interfaces
 		List<Group> SortByCapacity();
 	    bool IsGroupFull(Group group);
 		void Edit(Group group);
+		bool IsAllGroupsFull(List<Group> groups);
 
     }
 }

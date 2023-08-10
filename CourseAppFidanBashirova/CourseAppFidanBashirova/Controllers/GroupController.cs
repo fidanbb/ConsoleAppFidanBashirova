@@ -329,6 +329,7 @@ namespace CourseAppFidanBashirova.Controllers
 
                     else
                     {
+
                         ConsoleColor.Blue.WriteConsole("Edit Group Name");
                     Name: string name = Console.ReadLine();
 
@@ -377,21 +378,28 @@ namespace CourseAppFidanBashirova.Controllers
                         {
                             if (isCorrectCapacity)
                             {
-                                if (capacity > 1 && capacity < 10)
+                                if (capacity <= 1 || capacity >= 10)
                                 {
-                                    Group newGroup = new()
-                                    {
-                                        Id = id,
-                                        Name = name,
-                                        Capacity = capacity
-                                    };
-                                    _groupService.Edit(newGroup);
-                                }
-                                else
-                                {
+
                                     ConsoleColor.Red.WriteConsole("Capacity must be between 1 and 10,add capacity again");
                                     goto Capacity;
+
+                                    
                                 }
+                                if (group.Students.Count() > capacity)
+                                {
+                                    ConsoleColor.Red.WriteConsole("Capacity you edited is less than student number," +
+                                        $"capacity must greater than {group.Students.Count}, add capacity again");
+                                    goto Capacity;
+                                }
+
+                                Group newGroup = new()
+                                {
+                                    Id = id,
+                                    Name = name,
+                                    Capacity = capacity
+                                };
+                                _groupService.Edit(newGroup);
 
                             }
                             else

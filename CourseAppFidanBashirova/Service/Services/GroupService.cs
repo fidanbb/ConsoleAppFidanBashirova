@@ -51,6 +51,11 @@ namespace Service.Services
             return _groupRepository.GetById(id);
         }
 
+        public bool IsAllGroupsFull(List<Group> groups)
+        {
+            return _groupRepository.IsAllGroupsFull(groups);
+        }
+
         public bool IsGroupFull(Group group)
         {
             return _groupRepository.IsGroupFull(group);

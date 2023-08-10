@@ -28,6 +28,13 @@ namespace CourseAppFidanBashirova.Controllers
             }
             else
             {
+                //bool isAllGroupsGull = _groupService.IsAllGroupsFull(groups);
+
+                //if (true)
+                //{
+
+                //}
+
                 ConsoleColor.Blue.WriteConsole("Add Student's FullName");
             FullName: string fullName = Console.ReadLine();
 
@@ -261,6 +268,7 @@ namespace CourseAppFidanBashirova.Controllers
                     }
 
                     _studentService.Delete(student);
+                    student.StudentGroup.Students.Remove(student);
                     ConsoleColor.Green.WriteConsole("Student Deleted");
 
                     ConsoleColor.Cyan.WriteConsole("Please add operation again");
@@ -387,6 +395,7 @@ namespace CourseAppFidanBashirova.Controllers
                         }
 
                         ConsoleColor.Blue.WriteConsole("Edit Age");
+
                     Age: string ageStr = Console.ReadLine();
 
                         int age;
@@ -466,6 +475,7 @@ namespace CourseAppFidanBashirova.Controllers
                                             goto GroupId;
                                         }
 
+
                                         Student newStudent = new()
                                         {
                                             Id = id,
@@ -477,9 +487,10 @@ namespace CourseAppFidanBashirova.Controllers
 
                                         };
 
-
-
+                                        student.StudentGroup.Students.Remove(student);
                                         _studentService.Edit(newStudent);
+                                        student.StudentGroup.Students.Add(newStudent);
+
                                         ConsoleColor.Green.WriteConsole("Student Edited");
                                     }
 
@@ -586,8 +597,9 @@ namespace CourseAppFidanBashirova.Controllers
                                             };
 
 
-
+                                            student.StudentGroup.Students.Remove(student);
                                             _studentService.Edit(newStudent);
+                                            student.StudentGroup.Students.Add(newStudent);
                                             ConsoleColor.Green.WriteConsole("Student Edited");
                                         }
 

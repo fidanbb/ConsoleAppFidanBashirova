@@ -33,6 +33,19 @@ namespace Repository.Repositories
             exsistingGroup.Name = group.Name;
             exsistingGroup.Capacity = group.Capacity;
         }
+
+        public bool IsAllGroupsFull(List<Group> groups) //method sehvdi duzelt
+        {
+            foreach (var group in groups)
+            {
+                if (group.Students.Count>=group.Capacity)
+                {
+                    return true;
+                }
+            }
+            return false;
+
+        }
     }
 }
 
