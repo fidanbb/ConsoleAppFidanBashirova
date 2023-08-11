@@ -33,7 +33,7 @@ AccountOperation: string accountOperationStr = Console.ReadLine();
             if (accountController.CheckAnyUsersExit())
             {
                 ConsoleColor.Red.WriteConsole("You must register first");
-                accountController.Register();
+                //accountController.Register();
                 AccountMenu();
 
             }
@@ -156,7 +156,6 @@ static void Menu()
         "Please select one option: " +
     "GroupOperations: 1 - CreateGroup, 2 - DeleteGroup, 3 - EditGroup, 4 - GetAllGroups, " +
     "5 - GetGroupById, 6 - SearchGroupByName, 7 - SortGroupByCapacity, " +
-    "StudentOperations: 8 - CreateStudent, " +
-    "9 - DeleteStudent, 10 - EditStudent, 11 - GetAllStudents, 12 - GetStudentById, " +
-    "13 - SearchStudentByFullName, 14 - SortStudentByAge");
+    "StudentOperations: 8 - CreateStudent,9 - DeleteStudent, 10 - EditStudent, " +
+    "11 - GetAllStudents, 12 - GetStudentById, 13 - SearchStudentByFullName, 14 - SortStudentByAge");
 }

@@ -103,6 +103,12 @@ namespace CourseAppFidanBashirova.Controllers
                             goto PhoneNumber;
                         }
 
+                        if (!phoneNumber.StringRegEx(@"^.{10}$"))
+                        {
+                            ConsoleColor.Red.WriteConsole("PhoneNumber must be 10 charcters long, please add phoneNumber again");
+                            goto PhoneNumber;
+                        }
+
                         ConsoleColor.Blue.WriteConsole("Add Group Id");
                     GroupId: string groupIdStr = Console.ReadLine();
                         int groupId;
@@ -138,7 +144,11 @@ namespace CourseAppFidanBashirova.Controllers
                                         StudentGroup = group
                                     };
 
+
+                                    
+
                                     _studentService.Create(student);
+                                    _groupService.Edit(group);
                                     ConsoleColor.Green.WriteConsole("Student Created");
                                     ConsoleColor.Cyan.WriteConsole("Please add operation again");
                                 }
@@ -371,15 +381,6 @@ namespace CourseAppFidanBashirova.Controllers
 
             else
             {
-
-                bool isAllGroupsFull = _groupService.IsAllGroupsFull(groups);
-
-                if (isAllGroupsFull)
-                {
-                    ConsoleColor.Red.WriteConsole("All groups are full, please add operation again");
-                }
-                else
-                {
                     ConsoleColor.Blue.WriteConsole("Add Student Id");
                 Id: string idStr = Console.ReadLine();
 
@@ -458,6 +459,12 @@ namespace CourseAppFidanBashirova.Controllers
                                 if (!phoneNumber.StringRegEx(@"\d"))
                                 {
                                     ConsoleColor.Red.WriteConsole("PhoneNumber cannot have strings, please edit phoneNumber again");
+                                    goto PhoneNumber;
+                                }
+
+                                if (!phoneNumber.StringRegEx(@"^.{10}$"))
+                                {
+                                    ConsoleColor.Red.WriteConsole("PhoneNumber must be 10 charcters long, please add phoneNumber again");
                                     goto PhoneNumber;
                                 }
 
@@ -578,6 +585,12 @@ namespace CourseAppFidanBashirova.Controllers
                                         goto PhoneNumber;
                                     }
 
+                                    if (!phoneNumber.StringRegEx(@"^.{10}$"))
+                                    {
+                                        ConsoleColor.Red.WriteConsole("PhoneNumber must be 10 charcters long, please add phoneNumber again");
+                                        goto PhoneNumber;
+                                    }
+
 
                                     ConsoleColor.Blue.WriteConsole("Edit GroupId");
                                 GroupId: string groupIdStr = Console.ReadLine();
@@ -680,8 +693,7 @@ namespace CourseAppFidanBashirova.Controllers
                         ConsoleColor.Red.WriteConsole("Please add id format again");
                         goto Id;
                     }
-                }
-
+               
             }
         }
 

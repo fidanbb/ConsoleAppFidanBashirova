@@ -10,10 +10,13 @@ namespace CourseAppFidanBashirova.Controllers
 	public class GroupController
 	{
 		private readonly IGroupService _groupService;
+        private readonly IStudentService _studentService;
 
-		public GroupController()
+
+        public GroupController()
 		{
 			_groupService = new GroupService();
+            _studentService = new StudentService();
 		}
 
 		public void Create()
@@ -405,8 +408,11 @@ namespace CourseAppFidanBashirova.Controllers
                                 {
                                     Id = id,
                                     Name = name,
-                                    Capacity = capacity
+                                    Capacity = capacity,
+                                    Students = _studentService.GetAll().Where(m => m.StudentGroup.Id == id).ToList()
                                 };
+
+
                                 _groupService.Edit(newGroup);
 
                             }
