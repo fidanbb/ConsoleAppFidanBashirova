@@ -404,15 +404,25 @@ namespace CourseAppFidanBashirova.Controllers
                                     goto Capacity;
                                 }
 
+                                var students = _studentService.GetAll();
+
                                 Group newGroup = new()
                                 {
                                     Id = id,
                                     Name = name,
                                     Capacity = capacity,
-                                    Students = _studentService.GetAll().Where(m => m.StudentGroup.Id == id).ToList()
+                                    
                                 };
-
-
+                                
+                                if (students != null)
+                                {
+                                    newGroup.Students = students.Where(student => student.StudentGroup.Id == id).ToList();
+                                }
+                                else
+                                {
+                                 
+                                    newGroup.Students = new List<Student>(); 
+                                }
                                 _groupService.Edit(newGroup);
 
                             }

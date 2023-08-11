@@ -507,6 +507,7 @@ namespace CourseAppFidanBashirova.Controllers
                                         }
                                         else
                                         {
+                                            
 
                                             if (_groupService.IsGroupFull(newGroup))
                                             {
